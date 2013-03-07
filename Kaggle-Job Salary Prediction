@@ -3,7 +3,7 @@ options user=pdf;
 
 
 proc import DATAFILE="C:\Documents and Settings\zhaoer01\Desktop\Kaggle-Job Salary Prediction\Train_rev1.csv"
-  out=p_01;
+	out=p_01;
 run;
 
 proc means data=p_01(drop=FullDescription);
@@ -65,3 +65,30 @@ run;
 %mend;
 
 %imp_word;
+
+
+
+/********************************
+Deal with Title
+*********************************/
+
+data tt_01;
+length word $20;
+	set p_01(keep=Id title obs=1000);
+		title = lowcase(compress(title,,'ask'));
+		title = translate(title,' ',',');
+	    title = translate(title,' ','.');
+	    title = compbl(title);
+		word='';
+		count=0;
+   		do until(word=' ');
+	 		count+1;
+			word = scan(title, count,s);
+   			output;
+		end;
+run;
+
+proc sort data=tt_01 out=tt02;
+	where word ne "" and count<=3;
+	by id word;
+run;
