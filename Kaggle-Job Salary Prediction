@@ -1,0 +1,67 @@
+libname pdf "C:\Documents and Settings\zhaoer01\Desktop\Kaggle-Job Salary Prediction";
+options user=pdf;
+
+
+proc import DATAFILE="C:\Documents and Settings\zhaoer01\Desktop\Kaggle-Job Salary Prediction\Train_rev1.csv"
+  out=p_01;
+run;
+
+proc means data=p_01(drop=FullDescription);
+	output out=p_02;
+	var 
+run;
+
+data f_01;
+	set p_01(keep=Id FullDescription SalaryNormalized);
+		FullDescription = translate(FullDescription,' ',',');
+	    FullDescription = translate(FullDescription,' ','.');
+	    FullDescription = compbl(FullDescription);
+		FullDescription = lowcase(FullDescription);
+run;
+	
+data _null_ ;
+   length  word $20 sum 8;
+   dcl hash hh(hashexp:16) ;
+       hh.definekey('word') ;
+       hh.definedata('word', 'sum') ;
+       hh.definedone() ;
+   do until(eof) ;
+   set f_01 end = eof ;
+   		word='';
+		count=0;
+   		do until(word=' ');
+	 		count+1;
+			word = scan(FullDescription, count);
+   			if hh.find() = 0 then do ;
+      			sum +1 ;
+     		    hh.replace() ;
+   			end ;
+			else do;
+				sum=1;
+				hh.add();
+			end;
+		end;
+	end;
+   rc = hh.output(dataset: 'f_02') ;
+run ;
+
+proc sort data=f_02;
+	by descending sum;
+run;
+
+proc import DATAFILE="C:\Documents and Settings\zhaoer01\Desktop\Kaggle-Job Salary Prediction\job_des_word.csv"
+	out=job_des_word;
+run;
+
+
+
+
+
+%macro imp_word();
+%do i = 1 %to 3724;
+
+	
+%end;
+%mend;
+
+%imp_word;
