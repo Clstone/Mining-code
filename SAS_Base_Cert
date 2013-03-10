@@ -43,8 +43,7 @@ An additional method used for commenting one line of code is to use the
 asterisk at the beginning of the comment. Everything that is between the
 asterisk and the semicolon is a comment.
 
-What are the two major parts of SAS output?
-
+What are the two major parts of SAS output?  SAS Log and Output
 
 Syntax errors include
 􀂄 misspelled keywords
@@ -56,3 +55,11 @@ information is written to the SAS log:
 • the word ERROR or WARNING
 • the location of the error
 • an explanation of the error.
+
+When you make changes to the program in the Enhanced Editor and have not
+saved the new version of the program, the window bar and the top border of
+the window reflect that you changed the program without saving it by putting
+an asterisk (*) beside the window name. When you save the program, the *
+disappears.
+
+
