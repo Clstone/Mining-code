@@ -1,1 +1,45 @@
-BAS
+SAS Data Sets
+1.Descriptor Portion
+2.Data Portion
+
+The CONTENTS procedure displays the descriptor portion of a SAS data set.
+
+The descriptor portion contains the metadata of the data set.
+
+There are two types of variables:
+1.character contain any value: letters, numbers, special
+characters, and blanks. Character values
+are stored with a length of 1 to 32,767
+bytes. One byte equals one character.
+2.numeric stored as floating point numbers in 8 bytes
+of storage by default. Eight bytes of floating
+point storage provide space for 16 or 17
+significant digits. You are not restricted to
+8 digits.
+
+SAS names
+􀂄 can be 32 characters long.
+􀂄 can be uppercase, lowercase, or mixed-case.
+􀂄 must start with a letter or underscore. Subsequent
+characters can be letters, underscores, or numeric
+digits.
+
+SAS stores date values as numeric values.
+A SAS date value is stored as the number of days between
+January 1, 1960, and a specific date.
+
+A character missing value is displayed as a blank.
+A numeric missing value is displayed as a period.
+
+SAS statements
+􀂄 usually begin with an identifying keyword
+􀂄 always end with a semicolon
+
+Avoid placing the /* comment symbols in columns 1 and 2. On some
+operating environments, SAS may interpret these symbols as a request to end
+the SAS job or session.
+
+An additional method used for commenting one line of code is to use the
+asterisk at the beginning of the comment. Everything that is between the
+asterisk and the semicolon is a comment.
+
