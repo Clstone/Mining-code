@@ -62,4 +62,23 @@ the window reflect that you changed the program without saving it by putting
 an asterisk (*) beside the window name. When you save the program, the *
 disappears.
 
+A SAS data library is a collection of SAS files that are recognized as a unit by SAS.
+
+You can use the LIBNAME statement to assign a libref to a SAS data library
+
+Rules for naming a libref:
+􀂄 must be 8 characters or less
+􀂄 must begin with a letter or underscore
+􀂄 remaining characters are letters, numbers, or
+underscores.
+
+Use the _ALL_ keyword to list all the SAS files in the library
+and the NODS option to suppress the descriptor portions of
+the data sets.
+General form of the NODS option:
+NODS must be used in conjunction with the keyword _ALL_.
+PROC CONTENTS DATA=libref._ALL_ NODS;
+RUN;
+
+
 
