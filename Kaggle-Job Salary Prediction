@@ -6,19 +6,30 @@ proc import DATAFILE="C:\Documents and Settings\zhaoer01\Desktop\Kaggle-Job Sala
 	out=p_01;
 run;
 
-proc means data=p_01(drop=FullDescription);
-	output out=p_02;
-	var 
+proc means data=p_01(keep=SalaryNormalized) median q1 q3 p5 p95 p99;
 run;
 
 data f_01;
-	set p_01(keep=Id FullDescription SalaryNormalized);
+	set p_01(keep=Id FullDescription SalaryNormalized Title);
 		FullDescription = translate(FullDescription,' ',',');
 	    FullDescription = translate(FullDescription,' ','.');
 	    FullDescription = compbl(FullDescription);
 		FullDescription = lowcase(FullDescription);
+		Title = translate(Title,' ',',');
+	    Title = translate(Title,' ','.');
+	    Title = compbl(Title);
+		Title = lowcase(Title);
+	if SalaryNormalized<=21500 then salary_cat="A";
+	else if SalaryNormalized<=30000 then salary_cat="B";
+	else if SalaryNormalized<=42500 then salary_cat="C";
+	else salary_cat="D";
 run;
 	
+
+/********************************
+Deal with Job_Des
+*********************************/
+
 data _null_ ;
    length  word $20 sum 8;
    dcl hash hh(hashexp:16) ;
@@ -31,7 +42,7 @@ data _null_ ;
 		count=0;
    		do until(word=' ');
 	 		count+1;
-			word = scan(FullDescription, count);
+			word =scan(FullDescription, count);
    			if hh.find() = 0 then do ;
       			sum +1 ;
      		    hh.replace() ;
@@ -46,49 +57,317 @@ data _null_ ;
 run ;
 
 proc sort data=f_02;
+	where sum>2500 and word ne "";
 	by descending sum;
 run;
 
-proc import DATAFILE="C:\Documents and Settings\zhaoer01\Desktop\Kaggle-Job Salary Prediction\job_des_word.csv"
-	out=job_des_word;
+data _null_;
+	set f_02;
+	suffix=put(_n_,5.);
+	call symput(cats('word_',suffix),compress(word));
 run;
-
-
 
 
 
 %macro imp_word();
-%do i = 1 %to 3724;
 
-	
+%do i = 1 %to 2282;
+%put "that's" &i.;
+Options NONOTES NOSOURCE;
+data chisq_tst01;
+	set  f_01(keep=salary_cat FullDescription);
+	if index(FullDescription,"&&word_&i")>0 then flag =1;
+	else flag =0;
+	drop FullDescription;
+run;
+
+proc freq data=chisq_tst01 noprint;
+	table flag*salary_cat/chisq;
+	output out=chisq_tst02(keep=_PCHI_) chisq;
+run;
+
+data chisq_tst03;
+	length word $20;
+	set chisq_tst02;
+	word="&&word_&i";
+run;
+
+proc append base=chisq_tst data=chisq_tst03 force;
+run;
+Options NOTES SOURCE;
 %end;
 %mend;
 
 %imp_word;
 
+proc sort data=chisq_tst;
+	by descending _PCHI_;
+run;
 
 
 /********************************
 Deal with Title
 *********************************/
-
-data tt_01;
-length word $20;
-	set p_01(keep=Id title obs=1000);
-		title = lowcase(compress(title,,'ask'));
-		title = translate(title,' ',',');
-	    title = translate(title,' ','.');
-	    title = compbl(title);
-		word='';
+data _null_ ;
+   length  word_t $20 sum 8;
+   dcl hash hh(hashexp:16) ;
+       hh.definekey('word_t') ;
+       hh.definedata('word_t', 'sum') ;
+       hh.definedone() ;
+   do until(eof) ;
+   set f_01(drop=FullDescription) end = eof ;
+   		word_t='';
 		count=0;
-   		do until(word=' ');
+   		do until(word_t=' ');
 	 		count+1;
-			word = scan(title, count,s);
-   			output;
+			word_t =scan(Title, count);
+   			if hh.find() = 0 then do ;
+      			sum +1 ;
+     		    hh.replace() ;
+   			end ;
+			else do;
+				sum=1;
+				hh.add();
+			end;
 		end;
+	end;
+   rc = hh.output(dataset: 'f_t02') ;
+run ;
+
+proc sort data=f_t02;
+	where sum>100 and word_t ne "";
+	by descending sum;
 run;
 
-proc sort data=tt_01 out=tt02;
-	where word ne "" and count<=3;
-	by id word;
+data _null_;
+	set f_t02;
+	suffix=put(_n_,5.);
+	call symput(cats('word_t_',suffix),compress(word_t));
 run;
+
+
+%macro imp_word_t();
+
+%do i = 1 %to 1088;
+%put "that's" &i.;
+Options NONOTES NOSOURCE;
+data chisq_tst01;
+	set  f_01(keep=salary_cat Title);
+	if index(Title,"&&word_t_&i")>0 then flag =1;
+	else flag =0;
+	drop Title;
+run;
+
+proc freq data=chisq_tst01 noprint;
+	table flag*salary_cat/chisq;
+	output out=chisq_tst02(keep=_PCHI_) chisq;
+run;
+
+data chisq_tst03;
+	length word $20;
+	set chisq_tst02;
+	word="&&word_t_&i";
+run;
+
+proc append base=chisq_tst_t data=chisq_tst03 force;
+run;
+Options NOTES SOURCE;
+%end;
+%mend;
+
+%imp_word_t;
+
+proc sort data=chisq_tst_t;
+	by descending _PCHI_;
+run;
+
+
+/********************************
+Model Inputs
+*********************************/
+
+data p_02;
+	set p_01( drop=SalaryRaw);
+	where SalaryNormalized >0;
+	FullDescription = translate(FullDescription,' ',',');
+	FullDescription = translate(FullDescription,' ','.');
+	FullDescription = compbl(FullDescription);
+	FullDescription = lowcase(FullDescription);
+	Title = translate(Title,' ',',');
+	Title = translate(Title,' ','.');
+	Title = compbl(Title);
+	Title = lowcase(Title);
+	Title = lowcase(compress(Title,,'ask'));
+	SourceName = compbl(lowcase(compress(SourceName,,'ask')));
+	Category=  compbl(lowcase(compress(Category,,'ask')));
+	Company=  compbl(lowcase(compress(Company,,'ask')));
+	LocationRaw =  compbl(lowcase(compress(LocationRaw,,'ask')));
+	LocationNormalized =  compbl(lowcase(compress(LocationNormalized,,'ask')));
+	ContractType =  compbl(lowcase(compress(ContractType,,'ask')));
+	ContractTime =  compbl(lowcase(compress(ContractTime,,'ask')));
+
+	/**missing flag***/
+	if compress(ContractType)="" then ContractType_M_flg=1;
+	else ContractType_M_flg=0;
+	if compress(ContractTime)="" then ContractTime_M_flg=1;
+	else ContractTime_M_flg=0;
+	if compress(Company)="" then Company_M_flg=1;
+	else Company_M_flg=0;
+	
+	/***job_des important word***/
+	if index(FullDescription,"project")>0 then jb_flg_01 =1; else jb_flg_01 =0;
+	if index(FullDescription,"hour")>0 then jb_flg_02 =1 ;else jb_flg_02 =0;
+	if index(FullDescription,"age")>0 then jb_flg_03 =1 ;else jb_flg_03 =0;
+	if index(FullDescription,"develop")>0 then jb_flg_04 =1; else jb_flg_04 =0;
+	if index(FullDescription,"design")>0 then jb_flg_05 =1 ;else jb_flg_05 =0;
+	if index(FullDescription,"teams")>0 then jb_flg_06 =1 ;else jb_flg_06 =0;
+	if index(FullDescription,"stakeholder")>0 then jb_flg_07 =1 ;else jb_flg_07 =0;
+	if index(FullDescription,"week")>0 then jb_flg_08 =1 ;else jb_flg_08 =0;
+	if index(FullDescription,"lead")>0 then jb_flg_09 =1 ;else jb_flg_09 =0;
+	if index(FullDescription,"technical")>0 then jb_flg_10 =1 ;else jb_flg_10 =0;
+	if index(FullDescription,"monday")>0 then jb_flg_11 =1 ;else jb_flg_11 =0;
+	if index(FullDescription,"engineer")>0 then jb_flg_12 =1 ;else jb_flg_12 =0;
+	if index(FullDescription,"implement")>0 then jb_flg_13 =1 ;else jb_flg_13 =0;
+	if index(FullDescription,"phone")>0 then jb_flg_14 =1 ;else jb_flg_14 =0;
+	if index(FullDescription,"duties")>0 then jb_flg_15 =1 ;else jb_flg_15 =0;
+	if index(FullDescription,"friday")>0 then jb_flg_16 =1 ;else jb_flg_16 =0;
+	if index(FullDescription,"global")>0 then jb_flg_17 =1 ;else jb_flg_17 =0;
+	if index(FullDescription,"architect")>0 then jb_flg_18 =1; else jb_flg_18 =0;
+	if index(FullDescription,"day")>0 then jb_flg_19 =1 ;else jb_flg_19 =0;
+	if index(FullDescription,"strateg")>0 then jb_flg_20 =1 ;else jb_flg_20 =0;
+
+	
+	/***title important word***/
+	if index(Title,"ssis")>0 then tt_flg_01 =1 ;else tt_flg_01 =0;
+	if index(Title,"manage")>0 then tt_flg_02 =1; else tt_flg_02 =0;
+	if index(Title,"sen")>0 then tt_flg_03 =1 ;else tt_flg_03 =0;
+	if index(Title,"engineer")>0 then tt_flg_04 =1 ;else tt_flg_04 =0;
+	if index(Title,"admin")>0 then tt_flg_05 =1 ;else tt_flg_05 =0;
+	if index(Title,"direct")>0 then tt_flg_06 =1 ;else tt_flg_06 =0;
+	if index(Title,"developer")>0 then tt_flg_07 =1; else tt_flg_07 =0;
+	if index(Title,"customer")>0 then tt_flg_08 =1; else tt_flg_08 =0;
+	if index(Title,"teacher")>0 then tt_flg_09 =1 ;else tt_flg_09 =0;
+	if index(Title,"worker")>0 then tt_flg_10 =1; else tt_flg_10 =0;
+
+	
+	drop FullDescription;
+run;
+
+ /* categories levels >32*/
+
+
+proc sql;
+	create table p_t01 as
+	select distinct SourceName
+	from p_02
+	;
+quit;
+
+data p_t11;
+	set p_t01;
+	sn_obs+1;
+run;
+
+proc sql;
+	create table p_t02 as
+	select distinct LocationNormalized
+	from p_02
+	;
+quit;
+
+data p_t22;
+	set p_t02;
+	lm_obs+1;
+run;
+
+proc sql;
+	create table p_03 as
+	select a.*
+			,b.sn_obs
+			,c.lm_obs
+	from p_02(drop=Title LocationRaw Company) a
+	join p_t11 b
+	  on a.SourceName= b.SourceName
+    join p_t22 c
+	  on a.LocationNormalized = c.LocationNormalized
+	;
+quit;
+
+data p_04;
+	set p_03;
+	drop SourceName LocationNormalized id;
+run;
+
+
+
+
+
+/*proc sql;*/
+/*	create table p_t03 as*/
+/*	select distinct Company*/
+/*	from p_02*/
+/*	;*/
+/*quit;*/
+
+
+
+/**R codes**/
+iris<- read.csv("C:\\Documents and Settings\\zhaoer01\\Desktop\\Kaggle-Job Salary Prediction\\model_training_inputs.csv")
+ind <- sample(2, nrow(iris), replace=TRUE, prob=c(0.7, 0.3))
+trainData <- iris[ind==1,]
+testData <- iris[ind==2,]
+rf <- randomForest(SalaryNormalized ~ ., data=trainData, ntree=500, proximity=TRUE)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**/
+/*data tt_01;*/
+/*length word $20;*/
+/*	set p_01(keep=Id title obs=1000);*/
+/*		title = lowcase(compress(title,,'ask'));*/
+/*		title = translate(title,' ',',');*/
+/*	    title = translate(title,' ','.');*/
+/*	    title = compbl(title);*/
+/*		word='';*/
+/*		count=0;*/
+/*   		do until(word=' ');*/
+/*	 		count+1;*/
+/*			word = scan(title, count,s);*/
+/*   			output;*/
+/*		end;*/
+/*run;*/
+/**/
+/*proc sort data=tt_01 out=tt02;*/
+/*	where word ne "" and count<=3;*/
+/*	by id word;*/
+/*run;*/
