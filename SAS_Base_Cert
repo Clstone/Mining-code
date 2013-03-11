@@ -80,5 +80,32 @@ NODS must be used in conjunction with the keyword _ALL_.
 PROC CONTENTS DATA=libref._ALL_ NODS;
 RUN;
 
+Use the PAGEBY statement to put each subgroup on a separate page.(PRINT)
+proc print data=work.empdata;
+by JobCode;
+pageby JobCode;
+sum Salary;
+run;
+The PAGEBY statement must be used with a BY statement.
+
+
+
+When the ID and BY statements specify the same variable,(PRINT)
+proc sort data=ia.empdata out=work.empdata;
+by JobCode;
+run;
+proc print data=work.empdata;
+by JobCode;
+id JobCode;
+sum Salary;
+run;
+􀂄 the Obs column is suppressed
+􀂄 the BY line is suppressed
+􀂄 the ID/BY variable prints in the leftmost column
+􀂄 each ID/BY value only prints at the start of each BY group (and on the subtotal line, if a SUM statement is used).
+
+
+
+
 
 
