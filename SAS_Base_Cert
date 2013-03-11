@@ -159,3 +159,18 @@ leading blanks
 $CHAR8. reads 8 columns of character data and preserves
 leading blanks.
 
+SAS detects data errors when
+􀂄 the INPUT statement encounters invalid data in a field
+􀂄 illegal arguments are used in functions
+􀂄 impossible mathematical operations are requested
+
+When SAS encounters a data error,
+1. a note that describes the error is printed in the
+SAS log
+2. the input record being read is displayed in the
+SAS log (contents of the input buffer)
+3. the values in the SAS observation being created
+are displayed in the SAS log (contents of the PDV)
+4. a missing value is assigned to the appropriate
+SAS variable
+5. execution continues.
