@@ -153,3 +153,9 @@ Range(s)
 􀂄 ranges of values.
 􀂄 does not end with a period in the VALUE statement
 
+Selected Informats
+$8. reads 8 columns of character data and removes
+leading blanks
+$CHAR8. reads 8 columns of character data and preserves
+leading blanks.
+
