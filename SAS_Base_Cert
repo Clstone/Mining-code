@@ -116,5 +116,40 @@ contain spelling variations of the word or words
 specified.
 Selects names like SMYTHE and SMITT.
 
+Defining Titles and Footnotes
+Features of titles:
+􀂄 Titles appear at the top of the page.
+􀂄 The default title is The SAS System.
+􀂄 The value of n can be from 1 to 10.
+􀂄 An unnumbered TITLE is equivalent to TITLE1.
+􀂄 Titles remain in effect until they are changed,
+cancelled, or you end your SAS session.
+􀂄 The null TITLE statement, title;, cancels all titles.
 
+'label' specifies a label up to 256 characters.
+
+PROC FORMAT;
+VALUE format-name range1='label '
+range2='label '
+. . . ;
+RUN;
+
+Format-name
+􀂄 names the format you are creating
+􀂄 cannot be more than 32 characters in SAS System 9
+􀂄 for character values, must have a dollar sign ($) as the first character,
+a letter or underscore as the second character
+􀂄 for numeric values, must have a letter or underscore
+as the first character
+􀂄 cannot end in a number
+􀂄 cannot be the name of a SAS format
+
+Labels
+􀂄 can be up to 32,767 characters in length
+􀂄 are typically enclosed in quotes, although it is not
+required.
+Range(s)
+􀂄 can be single values
+􀂄 ranges of values.
+􀂄 does not end with a period in the VALUE statement
 
