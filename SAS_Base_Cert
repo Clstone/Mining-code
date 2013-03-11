@@ -105,7 +105,16 @@ run;
 􀂄 each ID/BY value only prints at the start of each BY group (and on the subtotal line, if a SUM statement is used).
 
 
+WHERE STATEMENT
+LIKE selects observations by comparing character
+values to specified patterns.
+A percent sign (%) replaces any number of characters.
+An underscore (_) replaces one character
 
+The sounds like (=*) operator selects observations that
+contain spelling variations of the word or words
+specified.
+Selects names like SMYTHE and SMITT.
 
 
 
