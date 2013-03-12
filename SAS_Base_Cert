@@ -206,5 +206,12 @@ USEDATE=YES;
 SCANTIME=YES;
 RUN;
 
-
-338
+Creating a Frequency Report
+By default, PROC FREQ
+􀂄 analyzes every variable in the SAS data set
+􀂄 displays each distinct data value
+􀂄 calculates the number of observations in which each
+data value appears (and the corresponding
+percentage)
+􀂄 indicates for each variable how many observations
+have missing values.
