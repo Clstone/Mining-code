@@ -275,4 +275,82 @@ run;
 
 P2-------------------------------------------
 
+All SAS variables have three required attributes:
+􀂄 name
+􀂄 type
+􀂄 length.
 
+data army navy airforce marines;
+drop Type;
+set prog2.military;
+select (Type);
+when ('Army') output army;
+when ('Naval') output navy;
+when ('Air Force') output airforce;
+when ('Marine') output marines;
+otherwise;
+end;
+run;
+
+ODS
+ODS HTML FILE='HTML-file-specification' <options>;
+SAS code that generates output
+ODS HTML CLOSE;
+
+The ODS CSVALL statement creates a comma-delimited
+file from output objects with these characteristics:
+􀂃 values containing letters or special characters are
+enclosed in double quotes
+􀂃 titles and footnotes are preserved.
+
+ods csvall file='raw-data-file';
+title1;
+footnote1 ‘Data: PROG2.MAYSALES';
+proc print noobs data=prog2.maysales;
+format listdate
+selldate date9.;
+run;
+ods csvall close;
+
+
+The FSLIST procedure enables you to browse external
+files within an interactive SAS session. You cannot use
+the FSLIST procedure to browse SAS data sets.
+PROC FSLIST FILEREF=file-specification <option(s)>;
+RUN;
+Remember to close the FSLIST window when you finish
+browsing your external file.
+
+data _null_;
+set prog2.maysales;
+file 'raw-data-file';
+if _N_=1 then
+put 'Description ' 'ListDate '
+'SellDate ' 'SellPrice';
+put Description
+ListDate : date9.
+SellDate : date9.
+SellPrice;
+run;
+
+Writing to an External File
+data _null_;
+set prog2.maysales;
+file 'raw-data-file';
+put Description
+ListDate : date9.
+SellDate : date9.
+SellPrice;
+run;
+注意 put语句后format 的冒号
+
+The RETAIN Statement
+The RETAIN statement
+􀂄 retains the value of the variable in the PDV across
+iterations of the DATA step
+􀂄 initializes the retained variable to missing before the
+first execution of the DATA step if an initial value is
+not specified
+􀂄 is a compile-time-only statement.
+
+133
