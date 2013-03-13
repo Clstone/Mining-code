@@ -1,3 +1,5 @@
+P1-------------------------------------------
+
 SAS Data Sets
 1.Descriptor Portion
 2.Data Portion
@@ -271,7 +273,6 @@ define Salary / format=dollar10.;
 rbreak after / summarize dol;
 run;
 
-372
-
+P2-------------------------------------------
 
 
