@@ -216,4 +216,62 @@ percentage)
 􀂄 indicates for each variable how many observations
 have missing values.
 
-339
+Use the TABLES statement to limit the variables included
+in the frequency counts. These are typically variables that
+have a limited number of distinct values.
+General form of a PROC FREQ step with a TABLES
+statement:
+PROC FREQ DATA=SAS-data-set;
+TABLES SAS-variables < / options >;
+RUN;
+
+Crosstabular Frequency Reports
+To display the crosstabulation results in a listing form,
+add the CROSSLIST option to the TABLES statement.
+proc freq data=ia.crew;
+tables JobCode*Location / crosslist;
+title 'Location Distribution for Job Codes';
+run;
+
+PROC MEANS step
+By default, PROC MEANS
+􀂄 analyzes every numeric variable in the
+SAS data set
+􀂄 prints the statistics N, MEAN, STD, MIN, and MAX
+􀂄 excludes missing values before calculating statistics.
+
+PROC REPORT
+
+PROC REPORT enables you to
+􀂄 create listing reports
+􀂄 create summary reports
+􀂄 enhance reports
+􀂄 request separate subtotals and grand totals
+􀂄 generate reports in an interactive point-and-click or
+programming environments.
+
+WINDOWS | WD invokes the procedure in an
+interactive REPORT window
+(default).
+NOWINDOWS | NOWD displays the report in the
+OUTPUT window.
+
+proc report data=ia.crew nowd;
+run;
+
+You can use a COLUMN statement to
+􀂄 select the variables to appear in the report
+􀂄 order the variables in the report.
+
+proc report data=ia.crew nowd;
+column JobCode Location Salary;
+define JobCode / group width=8 'Job Code';
+define Location / group 'Home Base';
+define Salary / format=dollar10.;
+rbreak after / summarize dol;
+run;
+
+372
+
+
+
