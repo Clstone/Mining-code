@@ -358,7 +358,7 @@ When you create an accumulating variable, an alternative
 to the RETAIN statement is the sum statement.
 General form of the sum statement:
 vvaarriaiabblele++ eexxpprreessssioionn;;
-í¯€
+ï¿½ï¿½ï¿½
 The sum statement
 ô€‚„ creates the variable on the left side of the plus sign
 if it does not already exist
@@ -393,5 +393,11 @@ field.
 ô€‚„ No error message is printed.
 ô€‚„ You might see invalid data messages or unexpected
 data values.
+
+By default, when there is missing data at the end of a row,
+1. SAS loads the next record to finish the observation
+2. a note is written to the log
+3. SAS loads a new record at the top of the DATA step
+and continues processing.
 
 
