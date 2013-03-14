@@ -353,4 +353,45 @@ first execution of the DATA step if an initial value is
 not specified
 􀂄 is a compile-time-only statement.
 
-133
+The Sum Statement
+When you create an accumulating variable, an alternative
+to the RETAIN statement is the sum statement.
+General form of the sum statement:
+vvaarriaiabblele++ eexxpprreessssioionn;;
+���
+The sum statement
+􀂄 creates the variable on the left side of the plus sign
+if it does not already exist
+􀂄 initializes the variable to zero before the first iteration
+of the DATA step
+􀂄 automatically retains the variable
+􀂄 adds the value of the expression to the variable at
+execution
+􀂄 ignores missing values.
+
+data divsals(keep=Div DivSal);
+set salsort;
+by Div;
+if First.Div then DivSal=0;
+DivSal+Salary;
+if Last.Div;
+run;
+
+Specifying an Informat
+To specify an informat, use the colon (:) format modifier in
+the INPUT statement between the variable name and the
+informat.
+General form of a format modifier in an INPUT statement:
+INPUT vvaarriaiabblele: ininffoorrmmaatt;
+
+Without the Colon
+The colon signals that SAS should read from delimiter to
+delimiter.
+If the colon is omitted, SAS reads the length of the
+informat, which may cause it to read past the end of the
+field.
+􀂄 No error message is printed.
+􀂄 You might see invalid data messages or unexpected
+data values.
+
+
