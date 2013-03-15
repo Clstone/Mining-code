@@ -553,10 +553,21 @@ past the end of the line.
 The double trailing @ should only be used with list input. If used with
 column or formatted input, an infinite loop can result.
 
+data dependants(drop=Type);
+length Type $ 1 EmpLName EmpFName
+DepName $ 20 Relation $ 1;
+retain EmpLName EmpFName;
+infile 'raw-data-file' dlm=':';
+input Type $ @;
+if Type='E' then
+input EmpLName $ EmpFName $;
+else do;
+input DepName $ Relation $;
+output;
+end;
+run;
 
-
-
-
+279
 
 
 
