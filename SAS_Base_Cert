@@ -658,4 +658,59 @@ NeewwVVaal=l=TTRRAANNWWRRDD((ssoouurrccee,,ttaarrggeett,,rreepplalacceemmeenntt)
 The TRANWRD function does not remove trailing blanks
 from target or replacement.
 
+The YRDIF function returns the number of years between two SAS date values.
+NeewwVVaal=l=YYRRDDIIFF((ssddaattee,,eeddaattee,,bbaassisis))
+basis identifies a character constant or variable that describes how SAS calculates
+the date difference. The following character strings are valid:
+'ACT/ACT' uses the actual number of days between dates in calculating
+the number of years. SAS calculates this value as the number
+of days that fall in 365-day years divided by 365 plus the
+number of days that fall in 366-day years divided by 366.
+You can use 'ACTUAL' as an alias.
+'30/360' specifies a 30-day month and a 360-day year in calculating
+the number of years. Each month is considered to have 30
+days and each year 360 days, regardless of the actual number
+of days in each month or year. SAS treats the last day of any
+month as the last day of a 30-day month. You can use '360'
+as an alias.
+'ACT/360' uses the actual number of days between dates in calculating
+the number of years. SAS calculates this value as the number
+of days divided by 360, regardless of the actual number of
+days in each year.
+'ACT/365' uses the actual number of days between dates in calculating
+the number of years. SAS calculates this value as the number
+of days divided by 365, regardless of the actual number of
+days in each year.
+
+The DO UNTIL Statement
+The DO UNTIL statement executes statements in a DO
+loop until a condition is true.
+expression is evaluated at the bottom of the loop.
+The statements in the loop are executed at least once.
+DO UNTIL (expression);
+<additional SAS statements>
+END;
+DO UNTIL (expression);
+<additional SAS statemen
+
+In a DO WHILE statement, the conditional clause is checked after the index variable
+is incremented.
+In a DO UNTIL statement, the conditional clause is checked before the index
+variable is incremented.
+
+Array Processing
+You can use arrays to simplify programs that
+􀂄 perform repetitive calculations
+􀂄 create many variables with the same attributes
+􀂄 read data
+􀂄 rotate SAS data sets by making variables into
+observations or observations into variables
+􀂄 compare variables
+􀂄 perform a table lookup.
+
+
+
+
+
+
 
