@@ -468,6 +468,63 @@ are surrounded by double quotes  3.DSD
 These options can be used separately or together in the
 INFILE statement.
 
+The SAS System loads a new record into the input buffer
+when it encounters an INPUT statement.
+You can have multiple INPUT statements in one DATA
+step.
+Each INPUT statement ends with a semicolon.
+DATA SAS-data-set;
+INPUT var-1 var-2 var-3;
+INPUT var-4 var-5;
+additional SAS statements
+DATA SAS-data-set;
+INPUT var-1 var-2 var
+
+Line Pointer Controls
+You can also use line pointer controls to control when
+SAS loads a new record.
+SAS loads the next record when it encounters a forward
+slash.
+DATA SAS-data-set;
+INPUT var-1 var-2 var-3 / var-4 var-5;
+additional SAS statements
+
+data example;
+infile 'raw-data-file';
+input #1 LName $ FName $
+#2 City $ State $
+#3 Phone $;
+run;
+
+
+Multiple INPUT statements are needed.
+input SalesID $ Location $ @;
+if location='USA' then
+input SaleDate : mmddyy10.
+Amount;
+else if Location='EUR' then
+input SaleDate : date9.
+Amount : commax8.;
+
+The Single Trailing @
+The single trailing @ option holds a raw data record in the
+input buffer until SAS
+􀂄 executes an INPUT statement with no trailing @, or
+􀂄 reaches the bottom of the DATA step.
+
+Multiple Observations Per Record
+The double trailing @ holds the raw data record across
+iterations of the DATA step until the line pointer moves
+past the end of the line.
+The double trailing @ should only be used with list input. If used with
+column or formatted input, an infinite loop can result.
+
+
+
+
+
+
+
 
 
 
