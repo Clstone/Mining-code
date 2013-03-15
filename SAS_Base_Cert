@@ -569,9 +569,93 @@ run;
 
 279
 
+When you use a SAS variable list in a SAS function, use
+the keyword OF in front of the first variable name in the
+list.
+data contrib;
+set prog2.donate;
+Total=sum(of Qtr1-Qtr4);
+if Total ge 50;
+run;
+If you omit the keyword OF, subtraction is performed
 
 
+The SCAN Function
+When the SCAN function is used,
+􀂄 the length of the created variable is 200 bytes if it is
+not previously defined with a LENGTH statement
+􀂄 delimiters before the first word have no effect
+􀂄 any character or set of characters can serve as
+delimiters
+􀂄 two or more contiguous delimiters are treated as a
+single delimiter
+􀂄 a missing value is returned if there are fewer than n
+words in string
+􀂄 if n is negative, SCAN selects the word in the
+character string starting from the end of string.
+
+If the third argument is omitted, the default delimiters are
+ASCII (PC, UNIX) blank . < ( + | & ! $ * ) ; - / , % ^
+EBCDIC (z/OS) blank . < ( + | & ! $ * ) ; - / , % | ¢ ¬
 
 
+The concatenation operator joins character strings.
+Depending on the characters available on your keyboard,
+the symbol to concatenate character values can be two
+exclamation points (!!), two vertical bars (||), or two
+broken vertical bars (¦¦).
+
+
+The TRIM function removes trailing blanks from its
+argument.
+If the argument is blank, TRIM returns one blank.
+The TRIM and TRIMN functions are similar. TRIMN returns a null string
+(zero blanks) if the argument is blank.
+
+The COMPBL function is also used to remove multiple blanks in a character
+string. COMPBL translates each occurrence of two or more consecutive
+blanks into a single blank. By default, the length of the value returned by the
+COMPBL function is the same as the length of the argument.
+
+The TRIM function does not remove leading blanks from a character argument. Use a
+combination of the TRIM and LEFT functions to remove leading and trailing blanks
+from a character argument.
+FullName=trim(left(FMName)) !! ' ' !! LName;
+
+The CATX function concatenates character strings,
+removes leading and trailing blanks, and inserts
+separators.
+CAT concatenates character strings without removing leading or trailing blanks.
+CATS concatenates character strings and removes leading and trailing blanks.
+CATT concatenates character strings and removes trailing blanks only
+
+The FIND function searches for a specific substring of
+characters within a character string that you specify and
+returns its location.
+PPoossititioionn == FFIINNDD((ttaarrggeett,,vvaaluluee<<,,mmooddififieierrss,,ssttaarrttppooss>>));
+The FIND function returns
+􀂄 the starting position of the first occurrence of value
+within target, if value is found
+􀂄 0, if value is not found.
+
+A modifier can be the value I or T. I indicates that the search is case-insensitive. T
+indicates that the search ignores trailing blanks. These two values can be combined in
+either order and in either case. If this argument is omitted, the search is case-sensitive
+and trailing blanks are taken into consideration.
+The startpos is an integer that specifies the position at which the search should start
+and the direction of the search. A positive value indicates a forward (right) search. A
+negative value indicates a backward (left) search. If this argument is omitted, the
+search starts at position 1 and moves forward.
+
+The PROPCASE function converts all words in an
+argument to proper case, in which the first letter is
+uppercase and the remaining letters are lowercase.
+
+The TRANWRD function replaces or removes all
+occurrences of a given word (or a pattern of characters)
+within a character string.
+NeewwVVaal=l=TTRRAANNWWRRDD((ssoouurrccee,,ttaarrggeett,,rreepplalacceemmeenntt));;
+The TRANWRD function does not remove trailing blanks
+from target or replacement.
 
 
