@@ -400,4 +400,76 @@ By default, when there is missing data at the end of a row,
 3. SAS loads a new record at the top of the DATA step
 and continues processing.
 
+The MISSOVER option prevents SAS from loading a new
+record when the end of the current record is reached.
+General form of the INFILE statement with the
+MISSOVER option:
+IINNFFIILLEE'r'raaww--ddaattaa--ffiliele''MMIISSSSOOVVEERR;;
+If SAS reaches the end of the row without finding values
+for all fields, variables without values are set to missing.
+
+The MISSOVER option is also valid in formatted and column input and can be used
+when you want to ensure that incomplete fields are set to missing. Suppose there is a
+raw data file with the following values:
+1
+22
+333
+If the shorter records are not padded with blanks, reading the file with the following
+code produces all missing values:
+data nums;
+infile 'file-name' missover;
+input num 4.;
+run;
+Notice the informat. This specifies that SAS is to look for exactly four bytes of data.
+In this case, the MISSOVER option indicates the variable is to be set to missing if the
+field is three bytes or less.
+The TRUNCOVER option enables SAS to read variable-length records without
+setting incomplete fields to missing. If the same raw data file is read with the code
+data nums;
+infile 'file-name' truncover;
+input num 4.;
+run;
+the resulting values are 1, 22, 333.
+When used with list input and without informats, the MISSOVER and
+TRUNCOVER options produce the same results.
+
+184
+
+Another INFILE statement option that deals with variable length records is the PAD
+option. The PAD option instructs SAS to make all records the same length by adding
+spaces to the end of shorter records. All records are padded to either the default
+record length or the record length specified by the LRECL= option. It is often used in
+the Windows operating environment with column or formatted input to prevent
+carriage returns from affecting how raw data is read.
+The PAD option is not appropriate for reading delimited files with list input because
+it can cause unexpected results. This is especially true if the data is delimited with
+spaces or if there is potentially more than one missing field at the end of some rows.
+
+By default, SAS treats two consecutive delimiters as one.
+Missing data should be represented by a placeholder.
+If your data does not have placeholders, use the DSD
+option.
+General form of the DSD option in the INFILE statement:
+The DSD option
+􀂄 sets the default delimiter to a comma
+􀂄 treats consecutive delimiters as missing values
+􀂄 enables SAS to read values with embedded delimiters
+if the value is surrounded by double quotes.
+
+INFILE Statement Options
+Problem                           Option
+1.Non-blank delimiters          1.DLM='delimiter(s)'
+2.Missing data at end of row    2.MISSOVER
+3.Missing data represented by
+consecutive delimiters
+and/or
+Embedded delimiters where values
+are surrounded by double quotes  3.DSD
+These options can be used separately or together in the
+INFILE statement.
+
+
+
+
+
 
