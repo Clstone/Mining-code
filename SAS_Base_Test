@@ -68,4 +68,20 @@ IN equal to one of a list
 
 ------------------------
 
+The following SAS program is submitted:
+proc print data = sasuser.houses;
+run;
+<insert OPTIONS statement here>
+proc means data = sasuser.shoes;
+run;
+Which one of the following OPTIONS statements resets the page number to 1 for
+the second report?
+A. option pageno = 1;
+B. option pagenum = 1;
+C. options reset pageno = 1;
+D. options reset pagenum = 1;
+Answer: A
+
+------------------------------------
+
 
