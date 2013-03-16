@@ -25,7 +25,7 @@ SAS 提供了多种方法提取表的前 N 条数据。
 1）options obs=N;
 这是个全局选项，一旦设置会对所有读表的操作起作用。不用改代码，很方便，但是有比较大的隐患。
 
-
+------------------------
 The following SAS program is submitted:
 data work.sets;
 do until (prod gt 6);
@@ -38,3 +38,34 @@ B. 6
 C. 7
 D. 8
 Answer: C
+
+data WORK.PRODUCTS;
+   Prod=1;
+   do until(Prod LE 6);
+     Prod + 1;
+   end;
+ run;
+那么PROD=2，为什么等于2？
+因为DO UNTIL是执行后再判断，PROD执行一次之后变成2,2 LE 6是true，所以终止执行！。
+UNTIL里面的表达式是循环终止的判断条件，如果UNTIL里面为真，那么就终止执行DO LOOP；
+而WHILE的表达式是循环继续的判断条件，为真继续执行DO LOOP。
+
+英文解释：
+The DO UNTIL statement executes statements in a DO loop repetitively until a condition is true,
+checking the condition after each iteration of the DO loop. The DO WHILE statement evaluates the
+condition at the top of the loop; the DO UNTIL statement evaluates the condition at the bottom of the loop.
+
+EQ = equal to
+NE ^=
+¬=
+~=
+not equal to
+GT > greater than
+LT < less than
+GE >= greater than or equal to
+LE <= less than or equal to
+IN equal to one of a list
+
+------------------------
+
+
