@@ -1,0 +1,40 @@
+123题
+
+QUESTION 2
+When the following SAS program is submitted, the data set SASDATA.PRDSALES
+contains 5000 observations:
+libnamesastemp 'SAS-data-library';
+options obs = 500;
+proc print data = sasdata.prdsales (firsttobs = 100);
+run;
+options obs = max;
+proc means data = sasdata.prdsales (firsttobs = 500);
+run;
+How many observations are processed by each procedure?
+A. 400 for PROC PRINT
+4500 for PROC MEANS
+B. 401 for PROC PRINT
+4501 for PROC MEANS
+C. 401 for PROC PRINT
+4500 for PROC MEANS
+D. 500 for PROC PRINT
+5000 for PROC MEANS
+Answer: B
+
+SAS 提供了多种方法提取表的前 N 条数据。
+1）options obs=N;
+这是个全局选项，一旦设置会对所有读表的操作起作用。不用改代码，很方便，但是有比较大的隐患。
+
+
+The following SAS program is submitted:
+data work.sets;
+do until (prod gt 6);
+prod + 1;
+end;
+run;
+Which one of the following is the value of the variable PROD in the output data set?
+A. 5
+B. 6
+C. 7
+D. 8
+Answer: C
