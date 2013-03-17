@@ -84,4 +84,25 @@ Answer: A
 
 ------------------------------------
 
+QUESTION 20
+The following SAS program is submitted:
+proc sort data=work.employee;
+by descending fname;
+proc sort sort data=work.salary;
+by descending fname;
+data work.empdata;
+merge work.employee
+work.salary;
+by fname;
+run;
+Which one of the following statements explains why the program failed execution?
+A. The SORT procedures contain invalid syntax.
+B. The merged data sets are not permanent SAS data sets.
+C. The data sets were not merged in the order by which they were sorted.
+D. The RUN statements were omitted after each of the SORT procedures.
+Answer: C
+
+--------------------------------------------------
+
+
 
