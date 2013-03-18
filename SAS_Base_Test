@@ -403,6 +403,28 @@ Answer: B
 
 level = 2 or 3  -> (level = 2) or 3  -> 3是永远成立的 -> 一直成立
 
+----------------------------------------------------------------------
+
+QUESTION 112
+The contents of the raw data file SIZE are listed below:
+----|----10---|----20---|----30
+72 95
+The following SAS program is submitted:
+data test;
+in file 'size';
+input@ 1 height 2.@ 4 weight 2;
+run;
+Which one of the following is the value of the variable WEIGHT in the output data
+set?
+A. 2
+B. 72
+C. 95
+D. . (missing numeric value)
+Answer: A
+
+weight后的2 应该是2.
+
+
 
 
 
