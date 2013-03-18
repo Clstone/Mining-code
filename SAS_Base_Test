@@ -349,7 +349,59 @@ Answer: C
 
 ------------------------------------------------------------
 
+The contents of the raw data file EMPLOYEE are listed below:
+----|----10---|----20---|----30
+Ruth 39 11
+Jose 32 22
+Sue 30 33
+John 40 44
+The following SAS program is submitted:
+data test;
+in file' employee';
+input employee_ name $ 1-4;
+if employee_ name = 'Sue' then input age 7-8;
+else input idnum 10-11;
+run;
+Which one of the following values does the variable AGE contain when the name of
+the employee is "Sue"?
+A. 30
+B. 33
+C. 40
+D. . (missing numeric value)
+Answer: C
 
+--------------------------------------------------------------
+
+QUESTION 111
+A SAS PRINT procedure output of the WORK.LEVELS data set is listed below:
+Obsname level
+1 Frank 1
+2 Joan 2
+3 Sui 2
+4 Jose 3
+5 Burt 4
+6 Kelly .
+7 Juan 1
+The following SAS program is submitted:
+data work . expertise;
+set work. levels;
+if level = . then
+expertise = 'Unknown';
+else if level = 1 then
+expertise = 'Low';
+else if level = 2 or 3 then
+expertise =' Medium';
+else
+expertise = 'High';
+run;
+Which of the following values does the variable EXPERTISE contain?
+A. Low, Medium, and High only
+B. Low, Medium, and Unknown only
+C. Low, Medium, High, and Unknown only
+D. Low, Medium, High, Unknown, and ' ' (missing character value)
+Answer: B
+
+level = 2 or 3  -> (level = 2) or 3  -> 3是永远成立的 -> 一直成立
 
 
 
