@@ -264,6 +264,24 @@ D. 9 observations and 2 variables
 Answer: B
 
 
+---------------------------------------------
+
+QUESTION 89
+The value 110700 is stored in a numeric variable.
+Which one of the following SAS formats is used to display the value as $110,700.00
+in a report?
+A. comma8.2
+B. comma11.2
+C. dollar8.2
+D. dollar11.2
+Answer: D
+
+------------------------------------------------
+*
+proc report ... define  /order  display
+
+
+----------------------------------------------
 
 
 
