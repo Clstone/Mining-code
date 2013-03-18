@@ -104,5 +104,53 @@ Answer: C
 
 --------------------------------------------------
 
+The following SAS program is submitted:
+proc contents data = sasuser.airplanes;
+run;
+Which one of the following is produced as output?
+A. the data portion of every data set in the SASUSER library
+B. the data portion of the data set SASUSER.AIRPLANES only
+C. the descriptor portion of every data set in the SASUSER library
+D. the descriptor portion of the data set SASUSER.AIRPLANES only
+Answer: D
+
+--------------------------------------------
+
+
+The following SAS program is submitted:
+proc datasets lib = sasuser;
+contents data = class varnum;
+quit;
+Which one of the following is the purpose of the VARNUM option?
+A. to print a list of variable names
+B. to print the total number of variables
+C. to print a list of the variables in alphabetic order
+D. to print a list of the variables in the order they were created
+Answer: D
+
+-----------------------------------------------
+
+
+The following SAS program is submitted:
+data work.flights;
+destination = 'CPH';
+select(destination);
+when('LHR') city = 'London';
+when('CPH') city = 'Copenhgen';
+otherwise;
+end;
+run;
+Which one of the following is the value of the CITY variable?
+A. London
+B. Copenh
+C. Copenhagen
+D. ' ' (missing character value)
+Answer: B
+
+
+--------------------------------------------------
+
+
+
 
 
