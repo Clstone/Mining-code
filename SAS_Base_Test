@@ -166,6 +166,49 @@ Answer: A
 
 -------------------------------------------------
 
+QUESTION 71
+Which one of the following is true of the RETAIN statement in a SAS DATA step
+program?
+A. It can be used to assign an initial value to _N_ .
+B. It is only valid in conjunction with a SUM function.
+C. It has no effect on variables read with the SET, MERGE and UPDATE statements.
+D. It adds the value of an expression to an accumulator variable and ignores missing
+values.
+Answer: C
+
+-----------------------------------------
+
+QUESTION 72
+The following SAS program is submitted:
+data work.test;
+First = 'Ipswich, England';
+City = substr(First,1,7);
+City_Country= City!!', '!!'England';
+run;
+Which one of the following is the value of the variable CITY_COUNTRY in the
+output data set?
+A. Ipswich!!
+B. Ipswich, England
+C. Ipswich, 'England'
+D. Ipswich , England
+Answer: D
+
+QUESTION 73
+The following SAS program is submitted:
+data work.test;
+First = 'Ipswich, England';
+City_Country= substr(First,1,7)!!', '!!'England';
+run;
+Which one of the following is the length of the variable CITY_COUNTRY in the
+output data set?
+A. 6
+B. 7
+C. 17
+D. 25
+Answer: D
+
+-------------------------------------------
+
 
 
 
