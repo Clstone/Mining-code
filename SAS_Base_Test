@@ -150,6 +150,26 @@ Answer: B
 
 --------------------------------------------------
 
+The following SAS program is submitted:
+data work.staff;
+JobCategory= 'FA';
+JobLevel= '1';
+jobCategory= JobCategory || JobLevel;
+run;
+Which one of the following is the value of the variable JOBCATEGORY in the
+output data set?
+A. FA
+B. FA1
+C. FA 1
+D. ' ' (missing character value)
+Answer: A
+
+-------------------------------------------------
+
+
+
+
+
 
 
 
