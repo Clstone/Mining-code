@@ -280,6 +280,7 @@ Answer: D
 *
 proc report ... define  /order  display
 
+proc print; id statement;
 
 ----------------------------------------------
 
