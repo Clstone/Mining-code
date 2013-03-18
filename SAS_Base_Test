@@ -424,7 +424,66 @@ Answer: A
 
 weight后的2 应该是2.
 
+------------------------------------------------------------------------------
+The following SAS program is submitted:
+data work.totalsales;
+set work.monthlysales(keep=year product sales);
+retrain montnsales {12};
+array montnsales {12};
+doi=1 to 12;
+monthsales{i}=sales;
+end;
+ent+1;
+monthsales{ent}=sales;
+run;
+The data set named WORK.MONTHLYSALES has one observation per month for
+A00-201
+Actualtests.com - The Power of Knowing
+each of five years for a total of 60 observations.
+Which one of the following is the result of the above program?
+A. The program fails execution due to data errors.
+B. The program fails execution due to syntax errors.
+C. The program runs with warnings and creates the WORK.TOTALSALES data set with
+60 observations.
+D. The program runs without errors or warnings and creates the WORK.TOTALSALES
+data set with 60 observations.
+Answer: B
 
+未声明数组
 
+-------------------------------------------------------------------------------------------------
+QUESTION 118
+Which one of the following is true when SAS encounters a data error in a DATA
+step?
+A. The DATA step stops executing at the point of the error, and no SAS data set is
+created.
+B. A note is written to the SAS log explaining the error, and the DATA step continues to
+execute.
+C. A note appears in the SAS log that the incorrect data record was saved to a separate
+SAS file for further examination.
+D. The DATA step stops executing at the point of the error, and the resulting DATA set
+contains observations up to that point.
+
+Answer: B
+
+注意是data error
+
+-----------------------------------------------------------------------------------------
+
+Which one of the following statements is true regarding the SAS automatic
+_ERROR_ variable?
+A. The _ERROR_ variable contains the values 'ON' or 'OFF'.
+B. The _ERROR_ variable contains the values 'TRUE' or 'FALSE'.
+C. The _ERROR_ variable is automatically stored in the resulting SAS data set.
+D. The _ERROR_ variable can be used in expressions or calculations in the DATA step.
+Answer: D
+
+During the processing of every DATA step, SAS automatically creates two
+variables, _N_ and _ERROR_. They are not written to the SAS data set but are
+available for processing during the execution of the DATA step.
+
+有错误 值为1
+
+------------------------------------------------------------------------------------------------------------
 
 
