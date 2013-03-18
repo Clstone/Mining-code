@@ -209,7 +209,59 @@ Answer: D
 
 -------------------------------------------
 
+The following SAS program is submitted:
+data work.test;
+Title = 'A Tale of two Cities, Charles j.Dickens';
+Word = scan(title,3,' ,');
+run;
+Which one of the following is the value of the variable WORD in the output data
+set?
+A. T
+B. of
+C. Dickens
+D. ' ' (missing character value)
+Answer: B
 
+
+------------------------------------------
+
+The following SAS program is submitted:
+data work.test;
+Author = 'Agatha Christie';
+First = substr(scan(author,1,' ,'),1,1);
+run;
+Which one of the following is the length of the variable FIRST in the output data
+set?
+A. 1
+B. 6
+C. 15
+D. 200
+Answer: D
+
+
+---------------------------------------
+
+QUESTION 87
+The SAS data set BANKS is listed below:
+BANKS
+name rate
+FirstCapital0.0718
+DirectBank0.0721
+VirtualDirect0.0728
+The following SAS program is submitted:
+data newbank;
+do year = 1 to 3;
+set banks;
+capital + 5000;
+end;
+run;
+Which one of the following represents how many observations and variables will
+exist in the SAS data set NEWBANK?
+A. 0 observations and 0 variables
+B. 1 observations and 4 variables
+C. 3 observations and 3 variables
+D. 9 observations and 2 variables
+Answer: B
 
 
 
