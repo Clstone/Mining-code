@@ -284,6 +284,72 @@ proc print; id statement;
 
 ----------------------------------------------
 
+QUESTION 94
+Unless specified, which variables and data values are used to calculate statistics in
+the MEANS procedure?
+A. non-missing numeric variable values only
+B. missing numeric variable values and non-missing numeric variable values only
+C. non-missing character variables and non-missing numeric variable values only
+D. missing character variables, non-missing character variables, missing numeric variable
+values, and non-missing numeric variable values
+Answer: A
+
+-------------------------------------------
+
+The following SAS program is submitted:
+footnote1 'Sales Report for last Mounth';
+footnote2 'Selected Products Only';
+footnote3 'All Regions';
+footnote4 'All Figure in Thousands of Dollars';
+proc print data = sasuser.shoes;
+footnote2 'All products';
+run;
+Which one of the following contains the footnote text that is displayed in the report?
+A. All Products
+B. Sales Report for Last Month
+All Products
+C. All Products
+All Regions
+All Figures in Thousands of Dollars
+D. Sales Report for Last Month
+All Products
+All Regions
+All Figures in Thousands of Dollars
+Answer: B
+
+---------------------------------------------------------------
+
+Which one of the following SAS system options prevents the page number from
+appearing on a report?
+A. NONUM
+B. NOPAGE
+C. NONUMBER
+D. NOPAGENUM
+Answer: C
+
+----------------------------------------------------------
+
+QUESTION 104
+The following SAS program is submitted:
+proc format;
+value score 1 - 50 = 'Fail'
+51-100='Pass';
+run;
+proc report data=work .courses nowd;
+column exam;
+define exam / display format=score.;
+run;
+The variable EXAM has a value of 50.5.
+How will the EXAM variable value be displayed in the REPORT procedure output?
+A. Fail
+B. Pass
+C. 50.5
+D. . (missing numeric value)
+Answer: C
+
+------------------------------------------------------------
+
+
 
 
 
