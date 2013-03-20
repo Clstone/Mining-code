@@ -708,6 +708,45 @@ By default, at the end of the DATA step, the program data vector is written to t
  
 ----------------------------------------
 
+When you define an order variable, 
+a. the detail rows are ordered according to their formatted values. 
+b. you can't create summary reports. 
+c. PROC REPORT displays only the first occurrence of each order variable value in a set of rows that have the same value for all order variables. 
+d. all of the above 
+
+
+Correct answer:  d
+ 
+  Your answer:  a 
+  
+Order variables do order rows according to the formatted values of the order variable, and PROC REPORT suppresses repetitious printing of order values. However, you can't use order variables in a summary report.  
+
+ 
+---------------------------------------------------
+
+What output does this PROC REPORT step produce? 
+proc report data=sasuser.houses nowd;
+   column style sqfeet bedrooms price;
+run;
+a. a list report ordered by values of the first variable in the COLUMN statement 
+b. a summary report ordered by values of the first variable in the COLUMN statement 
+c. a list report that displays a row for each observation in the input data set and which calculates the SUM statistic for numeric variables 
+d. a list report that calculates the N (frequency) statistic for character variables 
+
+
+Correct answer:   c 
+ 
+  Your answer:  a 
+  
+
+By default, PROC REPORT displays character variables as display variables. A report that contains one or more display variables has a detail row for each observation in the data set. By default, PROC REPORT displays numeric variables as analysis variables, which are used to calculate the default statistic SUM.  
+
+ 
+----------------------------------------------------
+
+
+
+
 
 
 
