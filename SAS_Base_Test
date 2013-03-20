@@ -686,6 +686,29 @@ Correct answer:   c
 To re-define the values of the variable Income in an assignment statement, you specify the variable name on the left side of the equal sign and an appropriate expression including the variable name on the right side of the equal sign.  
 
 
+--------------------------------------------------
+
+ 6.  
+
+ At the end of the DATA step, three actions occur. The first two are: 
+The values in the program data vector are written to the data set as an observation. 
+Control returns to the top of the DATA step. 
+What is the third action? 
+a. The automatic variable _N_ is incremented by one. 
+b. The DATA step stops execution. 
+c. The descriptor portion of the data set is written. 
+d. The values of variables in the program data vector are re-set to missing. 
+
+
+Correct answer:   d 
+ 
+  Your answer:  a 
+  
+By default, at the end of the DATA step, the program data vector is written to the data set, control returns to the top of the DATA step, and the values in the program data vector are set to missing. Automatic variables retain their values.  
+ 
+----------------------------------------
+
+
 
 
 
