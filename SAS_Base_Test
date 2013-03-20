@@ -668,6 +668,22 @@ The DATA= option specifies the data set that you are listing, and the ID stateme
  
 ------------------------------------------------
 
+Which statement correctly re-defines the values of the variable Income as 100 percent higher? 
+a. income=income*1.00;
+ 
+b. income=income+(income*2.00);
+ 
+c. income=income*2;
+ 
+d. income=*2;
+ 
+
+
+Correct answer:   c 
+ 
+  Your answer:  a 
+  
+To re-define the values of the variable Income in an assignment statement, you specify the variable name on the left side of the equal sign and an appropriate expression including the variable name on the right side of the equal sign.  
 
 
 
