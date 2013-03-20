@@ -486,4 +486,191 @@ available for processing during the execution of the DATA step.
 
 ------------------------------------------------------------------------------------------------------------
 
+How many statements does the following SAS program contain? 
+proc print data=new.prodsale
+                label double;
+   var state day price1 price2; where state='NC';
+   label state='Name of State'; run; 
+a. three 
+b. four 
+c. five 
+d. six 
+
+
+Correct answer:  c
+ 
+  Your answer:   
+  
+The five statements are: 1) the PROC PRINT statement (two lines long); 2) the VAR statement; 3) the WHERE statement (on the same line as the VAR statement); 4) the LABEL statement; and 5) the RUN statement (on the same line as the LABEL statement).  
+ 
+-------------------------------------------------------------------------------
+
+What is a SAS library?
+
+a. a collection of SAS files, such as SAS data sets and catalogs 
+b. in some operating environments, a physical collection of SAS files 
+c. in some operating environments, a logically related collection of SAS files 
+d. all of the above 
+
+
+Correct answer:   d 
+ 
+  Your answer:   
+  
+Every SAS file is stored in a SAS library, which is a collection of SAS files, such as SAS data sets and catalogs. In some operating environments, a SAS library is a physical collection of files. In others, the files are only logically related. In the Windows and UNIX environments, a SAS library is typically a group of SAS files in the same folder or directory.  
+
+ 
+------------------------------------------------------------------------
+
+Which SAS windows perform these tasks (in the order given)?
+
+
+perform most file management tasks such as moving, copying, and deleting files 
+
+navigate and manage output from SAS programs 
+
+enter, edit, and submit SAS programs
+
+view messages about your SAS session and about any SAS programs that you submit
+
+browse output from SAS programs 
+a. Program Editor, Log, Results, SAS Notepad, Output, Explorer  
+b. Explorer, Results, enhanced Editor or Program Editor, Log, Output  
+c. File Shortcuts, Explorer, enhanced Editor or Program Editor, Log, Results  
+d. Results, Output, enhanced Editor or Program Editor, Log, Explorer  
+
+
+Correct answer:  b
+ 
+  Your answer:   
+  
+You use the Explorer window for managing SAS files; the Results window for navigating and managing output; the enhanced Editor or Program Editor window for working with SAS programs; the Log window for viewing messages; and the Output window for browsing output.  
+
+-----------------------------------------------------------
+
+
+File shortcuts 
+a. remain in effect until you submit the file.  
+b. enable you to open, browse, and submit files.  
+c. are available only for files that were created using SAS.  
+d. are permanent shortcuts for accessing frequently used files.  
+
+
+Correct answer:   b 
+ 
+  Your answer:   
+  
+A file shortcut is a temporary, optional name that is used to identify an external file (a file that is created and maintained in your host operating environment, but which is not managed by SAS) to SAS. You can use shortcuts to open, browse, and submit files, and you can reference file shortcuts in your SAS programs.   
+
+ 
+-----------------------------------------------------------
+
+
+
+ In order for the date values 05May1955 and 04Mar2046 to be read correctly, what value must the YEARCUTOFF= option have? 
+a. a value between 1947 and 1954, inclusive 
+b. 1955 or higher 
+c. 1946 or higher 
+d. any value 
+
+
+Correct answer:   d 
+ 
+  Your answer:   
+  
+As long as you specify an informat with the correct field width for reading the entire date value, the YEARCUTOFF= option doesn't affect date values that have four-digit years.  
+
+
+
+
+
+ Which time span is used to interpret two-digit year values if the YEARCUTOFF= option is set to 1950?
+
+a. 1950-2049 
+b. 1950-2050 
+c. 1949-2050 
+d. 1950-2000 
+
+
+Correct answer:   a 
+ 
+  Your answer:   
+  
+The YEARCUTOFF= option specifies which 100-year span is used to interpret two-digit year values. The default value of YEARCUTOFF= is 1920. However, you can override the default and change the value of YEARCUTOFF= to the first year of another 100-year span. If you specify YEARCUTOFF=1950, then the 100-year span will be from 1950 to 2049.  
+
+---------------------------------------------------------------------------------
+
+
+
+ Assuming you are using SAS code and not special SAS windows, which one of the following statements is false? 
+a. LIBNAME statements can be stored with a SAS program to reference the SAS library automatically when you submit the program. 
+b. When you delete a libref, SAS no longer has access to the files in the library. However, the contents of the library still exist on your operating system.  
+c. Librefs can last from one SAS session to another. 
+d. You can access files that were created with other vendors' software by submitting a LIBNAME statement. 
+
+
+Correct answer:  c
+ 
+  Your answer:   
+  
+
+The LIBNAME statement is global, which means that librefs remain in effect until you modify them, cancel them, or end your SAS session. Therefore, the LIBNAME statement assigns the libref for the current SAS session only. You must assign a libref before accessing SAS files that are stored in a permanent SAS data library.   
+
+
+ 
+-----------------------------------------------------------------------
+
+
+
+
+ Which PROC PRINT step below creates the following output?
+
+Date On Changed Flight 
+04MAR99 232 18 219 
+05MAR99 160 4 219 
+06MAR99 163 14 219 
+07MAR99 241 9 219 
+08MAR99 183 11 219 
+09MAR99 211 18 219 
+10MAR99 167 7 219 
+
+a. proc print data=flights.laguardia noobs;
+   var on changed flight;
+   where on>=160;
+run;
+ 
+b. proc print data=flights.laguardia;
+   var date on changed flight;
+   where changed>3;
+run;
+ 
+c. proc print data=flights.laguardia label;
+   id date;
+   var boarded transferred flight;
+   label boarded='On' transferred='Changed';
+   where flight='219';
+run;
+ 
+d. proc print flights.laguardia noobs;
+    id date;
+    var date on changed flight;
+    where flight='219';
+run;
+ 
+
+
+Correct answer:   c 
+ 
+  Your answer:   
+  
+The DATA= option specifies the data set that you are listing, and the ID statement replaces the Obs column with the specified variable. The VAR statement specifies variables and controls the order in which they appear, and the WHERE statement selects rows based on a condition. The LABEL option in the PROC PRINT statement causes the labels specified in the LABEL statement to be displayed.  
+
+ 
+------------------------------------------------
+
+
+
+
+
+
 
