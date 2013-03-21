@@ -864,6 +864,36 @@ Correct answer:   b
   
 The OUTPUT statement overrides the automatic output at the end of the DATA step. On the last iteration of the DO loop, the value of Year, 2004, is written to the data set. 
  
+------------------------------------------------------------------
+
+For the first observation, what is the value of diff{i} at the end of the second iteration of the DO loop? 
+Weight1 Weight2 Weight3 
+192 200 215 
+137 130 125 
+220 210 213 
+
+
+array wt{*} weight1-weight10;
+array diff{9};
+do i=1 to 9;
+   diff{i}=wt{i+1}-wt{i};
+end;
+a. 15 
+b. 10 
+c. 8 
+d. -7 
+
+
+Correct answer:   a 
+ 
+  Your answer:  a 
+  
+At the end of the second iteration, diff{i} resolves as follows: 
+diff{2}=wt{2+1}-wt{2};
+diff{2}=215-200   
+
+
+ 
 
 
 
