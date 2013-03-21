@@ -746,6 +746,52 @@ By default, PROC REPORT displays character variables as display variables. A rep
 
 
 
+ Which program contains an error?
+
+a.     data clinic.stress(drop=timemin timesec);
+       infile tests;
+       input ID $ 1-4 Name $ 6-25 RestHR 27-29 MaxHR 31-33
+             RecHR 35-37 TimeMin 39-40 TimeSec 42-43
+             Tolerance $ 45;
+       TotalTime=(timemin*60)+timesec;
+       SumSec+totaltime;
+    run;
+ 
+b.     proc print data=clinic.stress;
+       label totaltime='Total Duration of Test';
+       format timemin 5.2;
+       drop sumsec;
+    run;
+ 
+c.     proc print data=clinic.stress(keep=totaltime timemin);
+       label totaltime='Total Duration of Test';
+       format timemin 5.2;
+    run;
+ 
+d.     data clinic.stress;
+       infile tests;
+       input ID $ 1-4 Name $ 6-25 RestHR 27-29 MaxHR 31-33
+             RecHR 35-37 TimeMin 39-40 TimeSec 42-43
+             Tolerance $ 45;
+       TotalTime=(timemin*60)+timesec;
+       keep id totaltime tolerance;
+    run;
+ 
+
+
+Correct answer:   b 
+ 
+  Your answer:  a 
+  
+To select variables, you can use a DROP or KEEP statement in any DATA step. You can also use the DROP= or KEEP= data set options following a data set name in any DATA or PROC step. However, you cannot use DROP or KEEP statements in PROC steps.  
+
+ 
+---------------------------------------------------------------------------
+
+
+
+
+
 
 
 
