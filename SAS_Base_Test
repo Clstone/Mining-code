@@ -807,6 +807,16 @@ At the bottom of the DATA step, the compilation phase is complete, and the descr
 -----------------------------------------------------------------------------------------
 
 
+One-to-One Reading
+You can combine data sets with one-to-one reading by including multiple SET statements in a DATA step. When you perform one-to-one reading, the new data set contains all the variables from all the input data sets. If the data sets contain same-named variables, the values that are read in from the last data set replace those that were read in from earlier ones. The number of observations in the new data set is the number of observations in the smallest original data set. 
+
+     data one2one;
+        set a;
+        set b;
+     run;
+
+-------------------------------------------------------------------------------
+
 
 
 
