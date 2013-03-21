@@ -819,6 +819,53 @@ You can combine data sets with one-to-one reading by including multiple SET stat
 
 
 
+ In the data set Work.Invest, what would be the stored value for Year? 
+data work.invest;
+   do year=1990 to 2004;
+      Capital+5000;
+      capital+(capital*.10);
+   end;
+run;
+a. missing 
+b. 1990 
+c. 2004 
+d. 2005 
+
+
+Correct answer:  d
+ 
+  Your answer:  d 
+  
+At the end of the fifteenth iteration of the DO loop, the value for Year is incremented to 2005. Because this value exceeds the stop value, the DO loop ends. At the bottom of the DATA step, the current values are written to the data set.  
+
+
+--------------------------------------------------------------------------------
+
+ 
+ 5.  
+
+ Which of the following statements is false regarding the program shown below? 
+data work.invest;
+   do year=1990 to 2004;
+      Capital+5000;
+      capital+(capital*.10);
+      output;
+   end;
+run;
+a. The OUTPUT statement writes current values to the data set immediately. 
+b. The stored value for Year is 2005. 
+c. The OUTPUT statement overrides the automatic output at the end of the DATA step. 
+d. The DO loop performs 15 iterations. 
+
+
+Correct answer:   b 
+ 
+  Your answer:  c 
+  
+The OUTPUT statement overrides the automatic output at the end of the DATA step. On the last iteration of the DO loop, the value of Year, 2004, is written to the data set. 
+ 
+
+
 
 
 
