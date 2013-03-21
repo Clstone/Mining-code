@@ -790,6 +790,24 @@ To select variables, you can use a DROP or KEEP statement in any DATA step. You 
 
 
 
+ At the start of DATA step processing, during the compilation phase, variables are created in the program data vector (PDV), and observations are set to: 
+a. blank 
+b. missing 
+c. 0 
+d. there are no observations 
+
+
+Correct answer:  d
+ 
+  Your answer:  b 
+  
+At the bottom of the DATA step, the compilation phase is complete, and the descriptor portion of the new SAS data set is created. There are no observations because the DATA step has not yet executed.  
+
+ 
+-----------------------------------------------------------------------------------------
+
+
+
 
 
 
