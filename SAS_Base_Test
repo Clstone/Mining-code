@@ -892,8 +892,84 @@ At the end of the second iteration, diff{i} resolves as follows:
 diff{2}=wt{2+1}-wt{2};
 diff{2}=215-200   
 
+---------------------------------------------------------------------------------------------
+
+
+ Formatted input can be used to read 
+a. standard free-format data  
+b. standard data in fixed fields  
+c. nonstandard data in fixed fields  
+d. both standard and nonstandard data in fixed fields 
+
+
+Correct answer:  d
+ 
+  Your answer:  a 
+  
+Formatted input can be used to read both standard and nonstandard data in fixed fields 
+
+-------------------------------
+
+ The COMMAw.d informat can be used to read which of the following values? 
+a. 12,805  
+b. $177.95  
+c. 18 % 
+d. all of the above  
+
+
+Correct answer:   d 
+ 
+  Your answer:  a 
+  
+The COMMAw.d informat strips out special characters, such as commas, dollar signs, and percent signs, from numeric data and stores only numeric values in a SAS data set. 
+
+-----
 
  
+
+ Which raw data file requires the PAD option in the INFILE statement in order to correctly read the data using either column input or formatted input? 
+a. 1---+----10---+----20---+ 
+JONES    M 48 128.6 
+LAVERNE  M 58 158 
+JAFFE    F 33 115.5 
+WILSON   M 28 130   
+
+ 
+b. 1---+----10---+----20---+ 
+JONES    M 48 128.6 
+LAVERNE  M 58 158.0 
+JAFFE    F 33 115.5 
+WILSON   M 28 130.0   
+
+ 
+c. 1---+----10---+----20---+ 
+JONES    M 48 128.6 
+LAVERNE  M 58   158 
+JAFFE    F 33 115.5 
+WILSON   M 28   130   
+
+ 
+d. 1---+----10---+----20---+ 
+  JONES    M 48 128.6 
+LAVERNE    M 58 158.0 
+  JAFFE    F 33 115.5 
+ WILSON    M 28 130.0   
+
+ 
+
+
+Correct answer:   a 
+ 
+  Your answer:  d 
+  
+Use the PAD option in the INFILE statement to read variable-length records that contain fixed-field data. The PAD option pads each record with blanks so that all data lines have the same length.   
+
+ 
+--------
+
+
+
+
 
 
 
