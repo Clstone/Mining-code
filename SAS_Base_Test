@@ -1132,6 +1132,84 @@ Unlike the double trailing at sign (@@), the single trailing at sign (@) is auto
 
 
 
+ After the value for code is read in the sixth iteration, which illustration of the program data vector is correct?
+
+1---+----10---+----20---+----30 
+H Lettuce 
+P Green Leaf  Quality Growers 
+P Iceberg     Pleasant Farm 
+P Romaine     Quality Growers 
+H Squash 
+P Yellow      Tasty Acres 
+P Zucchini    Pleasant Farm 
+
+
+data perm.produce (drop=code); 
+   infile orders;
+   retain Vegetable;
+   input code $1. @;
+   if code='H' then input @3 vegetable $6.;
+   if code='P';
+   input @3 Variety : $10. @15 Supplier : $15.;
+run;
+proc print data=perm.produce;
+run; 
+
+a.   
+b.  
+ 
+c. 
+ 
+d.  
+
+
+Correct answer:  b
+ 
+  Your answer:  c 
+  
+The value of Vegetable is retained across iterations of the DATA step. As the sixth iteration begins, the INPUT statement reads the value for code and holds the record, so that the values for Variety and Supplier can be read with an additional INPUT statement.  
+
+
+--------------------------------------------------------------------------------
+
+ 
+ 5.  
+
+ What happens when the fourth iteration of the DATA step is complete?
+
+1---+----10---+----20---+----30 
+F Apples 
+V Gala             $2.50 
+V Golden Delicious $1.99 
+V Rome             $2.35 
+F Oranges 
+V Navel            $2.79 
+V Temple           $2.99 
+
+data perm.orders (drop=type); 
+   infile produce; 
+   retain Fruit; 
+   input type $1. @; 
+   if type='F' then input @3 fruit $7.; 
+   if type='V'; 
+   input @3 Variety : $16. @20 Price comma5.; 
+run; 
+a. All of the values in the program data vector are written to the data set as the third observation. 
+b. All of the values in the program data vector are written to the data set as the fourth observation.  
+c. The values for Fruit, Variety, and Price are written to the data set as the third observation.  
+d. The values for Fruit, Variety, and Price are written to the data set as the fourth observation.  
+
+
+Correct answer:   c 
+ 
+  Your answer:  a 
+  
+This program creates one observation for each detail record. The RETAIN statement retains the value for Fruit as part of each observation until the values for Variety and Price can be read. The DROP= option in the DATA statement prevents the values for type from being written to the data set. 
+
+ 
+-------------------------------------------------------------------------------------------------------
+
+
 
 
 
