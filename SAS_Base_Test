@@ -1209,8 +1209,58 @@ This program creates one observation for each detail record. The RETAIN statemen
  
 -------------------------------------------------------------------------------------------------------
 
+3.The Excel workbook REGIONS.XLS contains the following four worksheets:
+     EAST
+     WEST
+     NORTH 
+     SOUTH 
+ 
+The following program is submitted:
+ 
+  libname MYXLS 'regions.xls'; 
+ 
+Which PROC PRINT step correctly displays the NORTH worksheet? 
+     A. proc print data=MYXLS.NORTH;run; 
+     B. proc print data=MYXLS.NORTH$;run; 
+     C. proc print data=MYXLS.'NORTH'e;run; 
+     D. proc print data=MYXLS.'NORTH$'n;run; 
+ 
+Answer: D
+ 
+-------------------------------
 
+39.The following SAS program is submitted:
+ 
+ data WORK.AUTHORS; 
+    array Favorites{3} $ 8 ('Shakespeare','Hemingway','McCaffrey');
+ run; 
+ 
+What is the value of the second variable in the dataset WORK.AUTHORS?
+     A. Hemingway
+     B. Hemingwa
+     C. ' ' (a missing value)
+     D. The program contains errors. No variables are created.
 
+Answer: B
+------------------------------------------------------------------     
+
+42.The following SAS program is submitted:
+ 
+  data WORK.ONE;
+     Text='Australia, US, Denmark';
+     Pos=find(Text,'US','i',5);
+  run;
+ 
+What value will SAS assign to Pos? 
+
+     A. 0
+     B. 1
+     C. 2
+     D. 12
+
+Answer: D
+
+--------------------------------------------------
 
 
 
