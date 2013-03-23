@@ -969,6 +969,116 @@ Use the PAD option in the INFILE statement to read variable-length records that 
 
 
 
+ The raw data file referenced by the fileref Students contains data that is 
+Raw Data File Students 1---+----10---+----20---+ 
+FRED JOHNSON 18 USC 1 
+ASHLEY FERRIS 20 NCSU 3 
+BETH ROSEMONT 21 UNC 4 
+
+
+a. arranged in fixed fields  
+b. free-format 
+c. mixed-format  
+d. arranged in columns  
+
+
+Correct answer:   b 
+ 
+  Your answer:  a 
+  
+
+The raw data file contains data that is free-format, meaning that the data is not arranged in columns or fixed fields.
+
+ 
+ 
+-----------------------------
+
+
+ 
+
+ Which SAS program was used to create the raw data file Teamdat from the SAS data set Work.Scores? 
+SAS Data Set Work.Scores Obs Name HighScore Team 
+1 Joe 87 Blue Beetles, Durham 
+2 Dani 79 Raleigh Racers, Raleigh 
+3 Lisa 85 Sand Sharks, Cary 
+4 Matthew 76 Blue Beetles, Durham 
+
+
+Raw Data File Teamdat 1---+----10---+----20---+----30---+ 
+Joe,87,"Blue Beetles, Durham" 
+Dani,79,"Raleigh Racers, Raleigh" 
+Lisa,85,"Sand Sharks, Cary" 
+Matthew,76,"Blue Beetles, Durham" 
+
+
+a. data _null_;
+   set work.scores;
+   file 'c:\data\teamdat' dlm=',';
+   put name highscore team;
+run;
+ 
+b. data _null_;
+   set work.scores;
+   file 'c:\data\teamdat' dlm=' ';
+   put name highscore team;
+run;
+ 
+c. data _null_;
+   set work.scores;
+   file 'c:\data\teamdat' dsd;
+   put name highscore team;
+run;
+ 
+d. data _null_;
+   set work.scores;
+   file 'c:\data\teamdat';
+   put name highscore team;
+run;
+ 
+
+
+Correct answer:   c 
+ 
+  Your answer:  a 
+  
+You can use the DSD option in the FILE statement to specify that data values containing commas should be enclosed in quotation marks. The DSD option uses a comma as the delimiter by default.    
+
+--------------------------------------------------------
+
+
+
+
+ Which SAS statement correctly reads the values for Flavor and Quantity? Make sure the length of each variable can accommodate the values shown. 
+
+Raw Data File Cookies 1---+----10---+----20---+----30 
+CHOCOLATE CHIP  10,453 
+OATMEAL  12,187 
+PEANUT BUTTER  11,546 
+SUGAR  12,331    
+
+
+
+a. input Flavor & $9. Quantity : comma.; 
+ 
+b. input Flavor & $14. Quantity : comma.;
+ 
+c. input Flavor : $14. Quantity & comma.; 
+ 
+d. input Flavor $14. Quantity : comma.;
+ 
+
+
+Correct answer:  b
+ 
+  Your answer:  c 
+  
+
+The INPUT statement uses list input with format modifiers and informats to read the values for each variable. The ampersand (&) modifier enables you to read character values that contain single embedded blanks. The colon (:) modifier enables you to read nonstandard data values and character values that are longer than eight characters, but which contain no embedded blanks.
+
+ 
+-------------------------------------------------------------------------------------------------------
+
+
 
 
 
