@@ -1080,6 +1080,41 @@ The INPUT statement uses list input with format modifiers and informats to read 
 
 
 
+ SAS does not automatically make adjustments for daylight saving time, but it does make adjustments for: 
+a. leap seconds 
+b. leap years 
+c. Julian dates 
+d. time zones 
+
+
+Correct answer:   b 
+ 
+  Your answer:  d 
+  
+SAS automatically makes adjustments for leap years. 
+
+-----------------------------------------------------------------------
+
+
+
+
+ SAS does not automatically make adjustments for daylight saving time, but it does make adjustments for: 
+a. leap seconds 
+b. leap years 
+c. Julian dates 
+d. time zones 
+
+
+Correct answer:   b 
+ 
+  Your answer:  d 
+  
+SAS automatically makes adjustments for leap years. 
+
+---------------------------------------------------------------------
+
+
+
 
 
 
