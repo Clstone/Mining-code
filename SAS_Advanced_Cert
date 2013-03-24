@@ -1,1 +1,93 @@
 SAS_Advanced_Cert
+
+SQL-----
+You can create new columns that contain either text or a calculation. New columns will appear in output, along with any existing columns that are selected. Keep in mind that new columns exist only for the duration of the query, unless a table or a view is created. 
+
+You can mix the two types of column references, names and numbers, in the ORDER BY clause. For example, the preceding ORDER BY clause could be rewritten as follows:
+
+     order by 2,empid;
+
+This type of join is known as an inner join. An inner join returns a result set for all of the rows in a table that have one or more matching rows in another table. 
+
+
+ If you join tables that don't contain one or more columns with matching data values, you can produce a huge amount of output. 
+
+If you specify a GROUP BY clause in a query that does not contain a summary function, your clause is changed to an ORDER BY clause, and a message to that effect is written to the SAS log.
+
+Because the CREATE TABLE statement is used, this query does not create a report. The SAS log verifies that the table was created and indicates how many rows and columns the table contains. 
+
+---
+You do not use a RUN statement with the SQL procedure.
+
+
+Do not end a clause with a semicolon unless it is the last clause in the statement.
+
+
+When you join multiple tables, be sure to specify columns that have matching data values in the WHERE clause in order to avoid unwanted combinations.
+
+
+To end the SQL procedure, you can submit another PROC step, a DATA step, or a QUIT statement.
+----
+
+
+
+ Complete the following PROC SQL query to select the columns Address and SqFeet from the table List.Size and to select Price from the table List.Price. (Only the Address column appears in both tables.) 
+proc sql;
+   _____________
+       from list.size,list.price;
+a. select address,sqfeet,price 
+b. select size.address,sqfeet,price  
+c. select price.address,sqfeet,price 
+d. either b or c  
+
+
+Correct answer:   b 
+ 
+  Your answer:  d 
+  
+The SELECT clause lists the columns from both tables to be queried. You must use a prefix with the Address column because it appears in both tables. The prefix specifies the table from which you want the column to be read.  
+
+ 
+Which statement is true regarding the use of the PROC SQL step to query data that is stored in two or more tables? 
+a. When you join multiple tables, the tables must contain a common column. 
+b. You must specify the table from which you want each column to be read. 
+c. The tables that are being joined must be from the same type of data source. 
+d. If two tables that are being joined contain a same-named column, then you must specify the table from which you want the column to be read. 
+
+
+Correct answer:  d
+ 
+  Your answer:  b 
+  
+If you are joining two tables that contain a same-named column, then you must use a prefix to specify the table(s) from which you want the column to be read. Remember that if you join tables that don't contain columns that have matching data values, you can produce a huge amount of output. Be sure to specify a WHERE clause to select only the rows that you want.   
+
+
+--------------------------------------------------------------------------------
+
+ 
+ 10.  
+
+ Which clause in the following program is incorrect? 
+proc sql;
+   select sex,mean(weight) as avgweight
+      from company.employees company.health
+      where employees.id=health.id
+      group by sex;
+a. SELECT 
+b. FROM 
+c. WHERE 
+d. GROUP BY 
+
+
+Correct answer:   b 
+ 
+  Your answer:  a 
+  
+The table names that are specified in the FROM clause must be separated by commas. Note that you can specify columns in the WHERE clause that are not specified in the SELECT clause.  
+
+ 
+---------------------------
+
+
+
+
