@@ -89,5 +89,29 @@ The table names that are specified in the FROM clause must be separated by comma
 ---------------------------
 
 
+Using the FEEDBACK Option
+
+When you specify SELECT *, you can also use the FEEDBACK option in the PROC SQL statement, which writes the expanded list of columns to the SAS log. For example, the PROC SQL query shown below contains the FEEDBACK option:
+
+
+     proc sql feedback;
+        select *
+           from sasuser.staffchanges;
+This query produces the following feedback in the SAS log.
+
+
+When you create PROC SQL queries, you will sometimes find it useful to limit the number of rows that PROC SQL displays in the output. To indicate the maximum number of rows to be displayed, you can use the OUTOBS= option in the PROC SQL statement. OUTOBS= is similar to the OBS= data set option.
+
+
+General form, PROC SQL statement with OUTOBS= option:
+PROC SQL OUTOBS=n;
+where n specifies the the number of rows. 
+
+     The OUTOBS= option restricts the rows that are displayed, but not the rows that are read. To restrict the number of rows that PROC SQL takes as input from any single source, use the INOBS= option. For more information about the INOBS= option, see the lesson Managing Processing Using PROC SQL.
+
+
+     The OUTOBS= and INOBS= options will affect tables that are created by using the CREATE TABLE statement and your report output.
+
+	In many of the examples in this lesson, OUTOBS= is used to limit the number of rows that are displayed in output.
 
 
