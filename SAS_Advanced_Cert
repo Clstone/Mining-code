@@ -115,3 +115,7 @@ where n specifies the the number of rows.
 	In many of the examples in this lesson, OUTOBS= is used to limit the number of rows that are displayed in output.
 
 
+Note that you do not have to specify the keyword CALCULATED in a HAVING clause; you would have to specify it in a WHERE clause.
+
+
+
