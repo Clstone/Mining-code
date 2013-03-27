@@ -114,8 +114,11 @@ where n specifies the the number of rows.
 
 	In many of the examples in this lesson, OUTOBS= is used to limit the number of rows that are displayed in output.
 
-
+----
 Note that you do not have to specify the keyword CALCULATED in a HAVING clause; you would have to specify it in a WHERE clause.
 
+When you are building a PROC SQL query, you might find it more efficient to check your query without actually executing it. To verify the syntax and the existence of columns and tables that are referenced in the query without executing the query, use either of the following:
 
+the NOEXEC option in the PROC SQL statement
+the VALIDATE keyword before a SELECT statement.
 
