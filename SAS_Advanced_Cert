@@ -169,4 +169,18 @@ Correct answer:   d
 Your answer:  a
 
 The use of summary functions does not require the use of table aliases. All of the other statements about table aliases that are shown here are true.  
+--
+
+A Cartesian product is returned when
+a.	
+join conditions are not specified in a PROC SQL join.
+
+b.	 join conditions are not specified in a PROC SQL set operation.
+c.	more than two tables are specified in a PROC SQL join.
+d.	the keyword ALL is used with the OUTER UNION operator.
+Correct answer:   a
+
+Your answer:  a
+
+A Cartesian product is returned when join conditions are not specified in a PROC SQL join. In a Cartesian product, each row from the first table is combined with every row from the second table.
 
