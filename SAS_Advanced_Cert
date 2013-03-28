@@ -146,5 +146,10 @@ The third statement indicates the problem with this PROC SQL query. A HAVING cla
 
 ----
 
+PROC SQL will not perform a join unless the columns that are compared in the join condition (in this example, One.X and Two.X) have the same data type. 
+
+
+By default, PROC SQL joins do not overlay columns with the same name. Instead, the output displays all columns that have the same name. 
+
 
 
