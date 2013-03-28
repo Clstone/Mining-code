@@ -121,4 +121,30 @@ When you are building a PROC SQL query, you might find it more efficient to chec
 
 the NOEXEC option in the PROC SQL statement
 the VALIDATE keyword before a SELECT statement.
+---
+
+The following PROC SQL query displays the items from a library that have the highest circulation (that is, are checked out most frequently). The query uses the table Library.Inventory. In this table, Circulation indicates the total number of times that the item has been checked out.
+proc sql;
+title 'Library Items with ';
+title2 'Circulation Above Average';
+   select title, author, type, 
+          category, circulation
+      from library.inventory
+      having circulation > avg(circulation)
+      order by 4;
+Which statement describes a problem with this query?
+
+a.	A summary function cannot be used in a HAVING clause.
+b.	In the HAVING clause, the keyword CALCULATED should be added prior to the summary function AVG.
+c.	Because there is no GROUP BY statement, the HAVING clause should be a WHERE clause.
+d.	The SELECT clause list must include all columns or expressions listed in the HAVING clause, so avg(circulation) should be added to the SELECT clause.
+Correct answer:   c
+
+Your answer:  a
+
+The third statement indicates the problem with this PROC SQL query. A HAVING clause subsets groups, not individual rows, so it must be used with a GROUP BY clause. PROC SQL will execute this query, but it will interpret the HAVING clause as a WHERE clause. The output of the query might not be what was expected.  
+
+----
+
+
 
