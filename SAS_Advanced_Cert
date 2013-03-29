@@ -220,3 +220,44 @@ When used with OUTER UNION, overlays same-named columns and displays columns tha
 Two tables have some or all columns in common, but the columns are not in the same order.
 
 ---
+
+To select all rows in the first table (both unique and duplicate) that do not have a matching row in the second table, add the keyword ALL after the EXCEPT set operator. 
+
+proc sql;
+   select *
+      from one
+   except all
+   select *
+      from two;
+
+
+---
+
+
+Using the Keyword CORR with the EXCEPT Operator
+
+To display both of the following
+
+only columns that have the same name
+all unique rows in the first table that do not appear in the second table
+
+proc sql;
+   select *
+      from one
+   except corr
+   select *
+      from two;
+
+----
+
+Using the Keywords ALL and CORR with the EXCEPT Operator
+
+If the keywords ALL and CORR are used together, the EXCEPT operator will display all unique and duplicate rows in the first table that do not appear in the second table, and will overlay and display only columns that have the same name.
+
+proc sql;
+   select *
+      from one
+   except all corr
+   select *
+      from two;
+
