@@ -198,4 +198,25 @@ In order to be overlaid, columns in the same relative position in the two SELECT
 
 --
 
+     proc sql;
+        select *
+           from table1
+        set-operator <all> <corr> 
+        select *
+           from table2;
 
+-
+ALL	
+Makes only one pass through the data and does not remove duplicate rows.
+
+-
+CORR (or CORRESPONDING)	
+Compares and overlays columns by name instead of by position:
+
+When used with EXCEPT, INTERSECT, and UNION, removes any columns that do not have the same name in both tables.
+
+When used with OUTER UNION, overlays same-named columns and displays columns that have nonmatching names without overlaying.
+	If an alias is assigned to a column in the SELECT clause, CORR will use the alias instead of the permanent column name.
+Two tables have some or all columns in common, but the columns are not in the same order.
+
+---
