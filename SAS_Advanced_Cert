@@ -184,3 +184,18 @@ Your answer:  a
 
 A Cartesian product is returned when join conditions are not specified in a PROC SQL join. In a Cartesian product, each row from the first table is combined with every row from the second table.
 
+--
+
+When processing a set operation that displays only unique rows (a set operation that contains the set operator EXCEPT, INTERSECT, or UNION), PROC SQL makes two passes through the data, by default:
+
+PROC SQL eliminates duplicate (nonunique) rows in the tables.
+
+PROC SQL selects the rows that meet the criteria and, where requested, overlays columns.
+For set operations that display both unique and duplicate rows, only one pass through the data (step 2 above) is required.
+
+
+In order to be overlaid, columns in the same relative position in the two SELECT clauses must have the same data type. If they do not, PROC SQL generates a warning message in the SAS log and stops executing. For example, in the tables shown above, if the column One.X had a different data type than column Two.X, the SAS log would display the following error message.
+
+--
+
+
