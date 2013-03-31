@@ -332,3 +332,66 @@ Correct answer:   b
 This PROC SQL output includes all rows from the table Pets that do not appear in the table Dogs. No duplicates are displayed. A PROC SQL set operation that contains the set operator EXCEPT without keywords produces these results.  
  
 --
+
+ Suppose you want to create the empty table Work.Birthdays that contains the following columns:
+
+Name, a character column with a length of 20 
+BirthDate, which has a date format 
+Salary, a numeric column that has a comma10.2 format and a width of 8 bytes. 
+Which of the PROC SQL steps shown below will create the table exactly as it is described above? Select the best answer.
+
+ 
+  proc sql;
+   create table work.birthdays
+          name char(20), 
+          Birthdate date,
+          Salary decimal(8) format=comma10.2;
+  
+  proc sql; 
+   create table work.birthdays 
+          (Name char(20), 
+          BirthDate num format=date9. informat=date9.,
+          Salary num format=comma10.2);
+ 
+  proc sql;
+   create table work.birthdays
+          (Name varchar(20), 
+          BirthDate date,
+          Salary decimal format=comma10.2);
+
+ 
+  both of the last two PROC SQL steps
+ 
+
+The last two PROC SQL steps will both create a table that has the column attributes shown above. Although the two steps specify different data types for the columns Name and Salary, these columns will have the same data types after PROC SQL makes the conversion to SAS data types.
+--
+
+ The following PROC SQL step creates a table from a query result: 
+
+     proc sql;
+        create table work.scores2 as
+           select *
+              from scores1;
+This PROC SQL step
+   
+  contains two statements: a CREATE TABLE statement and a SELECT statement.  
+  generates both a table and a report. 
+  does not generate a message in the SAS log. 
+  creates a table that has the same rows and columns as the table Scores1, although the rows may not be in the same order. 
+
+This PROC SQL step creates the table Scores2, which contains the same columns and rows as the table Scores1. Because there is no ORDER BY clause, the rows in the two tables may be in a different order. 
+
+---
+
+Which of the following PROC SQL steps uses valid syntax to insert two rows of data into the table Work.Maindishes? 
+  proc sql;
+   insert into work.maindishes
+      set name='CHICKEN KIEV', 
+          cal=762
+      set name='FAJITAS', 
+          cal=243;
+ 
+
+----
+
+
