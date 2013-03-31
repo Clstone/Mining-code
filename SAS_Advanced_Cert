@@ -261,3 +261,74 @@ proc sql;
    select *
       from two;
 
+---
+When processing set operators, PROC SQL follows a default order of precedence, unless this order is overridden by parentheses in the expression(s). By default, INTERSECT is evaluated first. OUTER UNION, UNION, and EXCEPT all have the same level of precedence. 
+
+-
+
+ 
+
+ Which PROC SQL step generates the following output from the tables Dogs and Pets?
+
+Dogs
+Name Price 
+FIFI $101 
+GEORGE $75 
+SPARKY $136 
+TRUFFLE $250 
+ Pets
+Name Price Arr 
+ANA $25 09JAN2002 
+FIFI $101 14MAR2002 
+GAO $57 08DEC2001 
+GAO $57 08DEC2001 
+SPARKY $136 16SEP2002 
+TRUFFLE $250 20DEC2002 
+ZEUS $500 08JUN2002 
+ Name Price 
+ANA $25 
+GAO $57 
+ZEUS $500 
+ 
+
+a. proc sql;
+   select name, price
+      from pets 
+   except all
+   select *
+      from dogs;
+
+ 
+b. proc sql;
+   select name, price
+      from pets 
+   except
+   select *
+      from dogs;
+
+ 
+c. proc sql;
+   select name, price
+      from pets 
+   except corr all
+   select *
+      from dogs;
+
+ 
+d. proc sql;
+   select *
+      from dogs 
+   except corr
+   select name, price
+      from pets;
+
+ 
+
+
+Correct answer:   b 
+ 
+  Your answer:  d 
+  
+This PROC SQL output includes all rows from the table Pets that do not appear in the table Dogs. No duplicates are displayed. A PROC SQL set operation that contains the set operator EXCEPT without keywords produces these results.  
+ 
+--
