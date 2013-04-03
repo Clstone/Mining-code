@@ -405,4 +405,33 @@ format
 label.
 
 
+	Which of the following PROC SQL steps uses invalid syntax to alter the columns of a table?
+	
+proc sql;
+   alter table work.confections
+      modify calories num format=7.2
+      add Color char(5)
+      drop brandname;
+	
+proc sql;
+   alter table work.confections
+      modify calories num format=7.2
+      add Color char(5),
+          PkgCode char(3)
+      drop brandname, numstores;
+	
+proc sql;
+   alter table work.confections
+      add Color char(5), 
+      modify calories num format=7.2,
+      drop brandname;
+	
+proc sql;
+   alter table work.confections
+      add Age num;
+
+
+
+The correct answer is selected.
+The ALTER statement can contain one or more of the clauses ADD, DROP, and MODIFY, in any order. When multiple clauses are used, they are not separated by commas.
 
