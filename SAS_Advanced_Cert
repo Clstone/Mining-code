@@ -395,3 +395,14 @@ Which of the following PROC SQL steps uses valid syntax to insert two rows of da
 ----
 
 
+Modifying Columns in a Table
+
+To modify the attributes of one or more existing columns in a table, use the MODIFY clause in the ALTER TABLE statement. You can use the MODIFY clause to change a column's
+
+length (column width) - for a character column only
+informat
+format
+label.
+
+
+
