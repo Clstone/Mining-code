@@ -435,3 +435,25 @@ proc sql;
 The correct answer is selected.
 The ALTER statement can contain one or more of the clauses ADD, DROP, and MODIFY, in any order. When multiple clauses are used, they are not separated by commas.
 
+
+---
+
+	
+In which library is the table Revenue stored?
+
+proc sql;
+   create view flights.cargov as             
+      select * 
+         from revenue;
+	Work	
+	Flights
+	Sasuser
+
+
+Correct.
+The default libref for the table or tables in the FROM clause is the libref of the library that contains the view. Using a one-level name in the FROM clause prevents you from having to change the view if you assign a different libref to the SAS data library that contains the view and its contributing table or tables.
+
+
+---
+
+
