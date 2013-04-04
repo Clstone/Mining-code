@@ -456,4 +456,23 @@ The default libref for the table or tables in the FROM clause is the libref of t
 
 ---
 
+Given the following PROC SQL view, which column(s) in State.Data can be updated?
+
+proc sql;
+   create view data.state as
+      select name as County,
+             population/area as Density
+         from state.data;
+	County	
+	Density
+	County and Density
+
+
+The correct answer is selected.
+You can update the column Name using the column's alias, County. However, you cannot update the derived column Density.
+
+--
+
+
+
 
