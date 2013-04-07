@@ -473,6 +473,13 @@ You can update the column Name using the column's alias, County. However, you ca
 
 --
 
+When you use the %LET statement to define macro variables, you should keep in mind the following rules:
+All values are stored as character strings.
+Mathematical expressions are not evaluated.
+The case of the value is preserved.
+Quotation marks that enclose literals are stored as part of the value.
+Leading and trailing blanks are removed from the value before the assignment is made.
+
 
 
 
