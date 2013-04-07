@@ -480,6 +480,51 @@ The case of the value is preserved.
 Quotation marks that enclose literals are stored as part of the value.
 Leading and trailing blanks are removed from the value before the assignment is made.
 
+--
+Which of the following statements is false?
+a.	 A macro variable can be defined and referenced anywhere in a SAS program except within data lines.
+b.	 Macro variables are always user-defined, and their values remain constant until they are changed by the user.
+c.	 Macro variables are text strings that are independent of SAS data sets.
+d.	 The values of macro variables can be up to 65,534 characters long.
+Correct answer:   b
+
+Your answer:  d
+
+Macro variables are always text strings that are independent of SAS data sets. The value of a macro variable can be up to 65,534 characters long, and the name of a macro variable can be up to 32 characters long. A macro variable can be defined or referenced anywhere in a SAS program except within data lines. There are two types of macro variables: automatic and user-defined. 
+
+--
+
+
+Which of the following statements does not correctly display the value of the macro variable month in the SAS log?
+a.	options &month;
+b.	%PUT &month;
+c.	options symbolgen;
+d.	%PUT the macro variable MONTH has the value &month. ;
+Correct answer:   a
+
+Your answer:  c
+
+There are two ways to display the value of a macro variable in the SAS log: you can turn on the SYMBOLGEN system option to list the values of all macro variables that are used, or you can use the %PUT statement to write specific text, including macro variable values, to the log.   
+
+--
+
+What value will these statements assign to the macro variable reptitle:
+
+%let area = "Southeast";
+%let reptitle = *  Sales Report for &area Area  *;   
+a.	Sales Report for Southeast Area
+b.	Sales Report for "Southeast" Area
+c.	*Sales Report for "Southeast" Area*
+d.	*  Sales Report for "Southeast" Area  *
+Correct answer:   d
+
+Your answer:  d
+
+Macro variables are stored as character strings. Quotation marks and most special characters are stored exactly as they are assigned, but leading blanks are stripped from assigned values. You can also include references to other macro variables within %LET statements. 
+
+----
+
+
 
 
 
