@@ -524,6 +524,32 @@ Macro variables are stored as character strings. Quotation marks and most specia
 
 ----
 
+Which of the following statements about the resolution of macro variable references is false?
+a.	Two ampersands resolve to one ampersand.
+b.	If more than four consecutive ampersands precede a name token, the macro processor generates an error message.
+c.	Re-scanning continues until there are no remaining macro triggers that the macro processor can resolve.
+d.	The macro processor always re-scans a name token that is preceded by multiple ampersands or by multiple percent signs.
+Correct answer:   c
+
+Your answer:  d
+
+If more than four consecutive ampersands precede a name token, rescanning continues from left to right until no more triggers can be resolved. The Forward Re-scan rule describes how the macro processor resolves macro variable references that start with multiple ampersands or with multiple percent signs. 
+
+
+------
+ 
+Which of the following is false?
+a.	 The SYMPUT routine can be used to create a macro variable during execution of the DATA step or during execution of an SCL program.
+b.	 In the DATA step, the SYMPUT routine automatically converts to a character value any numeric value that you attempt to assign as the value of a macro variable.
+c.	PROC SQL automatically converts to a numeric value any macro variable value that you attempt to compare to a numeric value.
+d.	In an SCL program, the SYMPUTN routine can be used to assign a numeric value to a macro variable.
+Correct answer:   c
+
+Your answer:  a
+
+The SYMPUT routine can be used in either the DATA step or in an SCL program. In the DATA step, the SYMPUT routine will perform automatic conversion on numeric values that you attempt to assign as values for macro variables, using the BEST12. format. In an SCL program, you should use the SYMPUTN routine if you want to assign a numeric value as a value for a macro variable. In a PROC SQL step, you need to use the INPUT function in order to convert macro variable values to numeric before you compare them to other numeric values.   
+
+--
 
 
 
