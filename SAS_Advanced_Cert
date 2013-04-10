@@ -567,6 +567,23 @@ In a mixed parameter list, positional parameters must be listed before any keywo
 --
 
 
+If you store a macro definition in a SAS catalog SOURCE entry,
+a.	 the macro definition can be submitted for compilation by using the FILENAME and %INCLUDE statements.
+b.	 you can use the PROC CATALOG statement to compile the macro.
+c.	 the SOURCE entry will be deleted at the end of the session.
+d.	 you do not need to compile the macro before you invoke it in a program.
+Correct answer:  a
+
+Your answer:  c
+
+When a macro definition is stored as a catalog SOURCE entry, you must compile it before you can call it from a SAS program. You compile a macro that is stored as a catalog SOURCE entry by using the CATALOG access method. This creates a session-compiled macro that will be deleted at the end of the SAS session. The PROC CATALOG statement enables you to view a list of the contents of a SAS catalog.  
+
+
+---
+
+
+
+
 
 
 
