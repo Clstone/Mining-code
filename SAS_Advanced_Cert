@@ -552,5 +552,23 @@ The SYMPUT routine can be used in either the DATA step or in an SCL program. In 
 --
 
 
+If you use a mixed parameter list in your macro program definition, which of the following is false?
+a.	You must list positional parameters before any keyword parameters.
+b.	Values for both positional and keyword parameters are stored in a local symbol table.
+c.	 Default values for keyword parameters are the values that are assigned in the macro definition, whereas positional parameters have a default value of null.
+d.	You can assign a null value to a keyword parameter in a call to the macro by omitting the parameter from the call.
+
+Correct answer:  d
+
+Your answer:  a
+
+In a mixed parameter list, positional parameters must be listed before any keyword parameters. Both positional and keyword parameters create macro variables in the local symbol table. To assign a null value to a keyword parameter, you list the parameter without a value in the macro call
+
+--
+
+
+
+
+
 
 
