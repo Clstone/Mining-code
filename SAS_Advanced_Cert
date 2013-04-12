@@ -621,7 +621,16 @@ An index can improve the efficiency with which SAS is able to access certain obs
 
 ---
 
+Which of the following statements is true?
+a.	 The FILEVAR= option can be used to dynamically change the currently opened input file to a new physical file.
+b.	 The FILEVAR= variable is not written to the data set.
+c.	 The FILEVAR= variable must contain a character string that is a physical filename.
+d.	  all of the above
+Correct answer:  d
 
+Your answer:  a
+
+The FILEVAR= option enables you to dynamically change the currently opened input file to a new input file. The FILEVAR= variable must contain a character string that is a physical filename. Like automatic variables, the FILEVAR= variable is not written to the data set.   
 
 
 
