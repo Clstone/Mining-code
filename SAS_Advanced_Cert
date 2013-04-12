@@ -581,7 +581,45 @@ When a macro definition is stored as a catalog SOURCE entry, you must compile it
 
 ---
 
+The variable that is created by the POINT= option is assigned a value
+a.	automatically during compilation of the DATA step.
+b.	automatically during execution of the DATA step.
+c.	during compilation of the DATA step, by program statements.
+d.	 during execution of the DATA step, by program statements.
+Correct answer:   d
 
+Your answer:  d
+
+The POINT= option in the SET statement names a variable. You must use program statements to assign a value to this variable during execution of the DATA step, before execution of the SET statement. Also, the value of the POINT= variable should be a number that corresponds to an observation number in the input data set, and it should be different each time the SET statement executes. 
+
+---
+
+Suppose that the Sasuser.Revenue data set has a simple index named FlightID. For which of the following programs will the index be used?
+a.	
+proc print data=sasuser.revenue;
+   where flightid ne 'IA11200';
+run;
+b.	
+data someflights;
+   set sasuser.revenue;
+   where flightid > 'IA11200';
+run;
+c.	
+data someflights;
+   set sasuser.revenue;
+   if flightid > 'IA11200';
+run;
+d.	
+proc print data=sasuser.revenue;
+   where origin='RDU' or flightid='IA03400';
+run;
+Correct answer:   b
+
+Your answer:  a
+
+An index can improve the efficiency with which SAS is able to access certain observations in a data set. However, an index is not always useful. SAS will not use an index to process subsetting IF statements, or other statements that SAS determines might be more efficiently processed without an index.  
+
+---
 
 
 
