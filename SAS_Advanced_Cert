@@ -656,5 +656,17 @@ Your answer:  c
 Remember that common variables might not have the same names. Manager and IDnum are the only two variables listed that match according to type and description. You can use the RENAME= option to rename one of these variables so that they can be used as BY variables in the MERGE statement of the DATA step. 
 
 
+---
 
+
+Array values should be stored in a SAS data set when
+a.	there are too many values to initialize easily in an array.
+b.	the values change frequently.
+c.	 the same values are used in many programs.
+d.	all of the above
+Correct answer:   d
+
+Your answer:  c
+
+Array values should be stored in a SAS data set when there are too many values to initialize easily in an array, the values change frequently, or the same values are used in many programs.  
 
