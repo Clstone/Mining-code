@@ -670,3 +670,68 @@ Your answer:  c
 
 Array values should be stored in a SAS data set when there are too many values to initialize easily in an array, the values change frequently, or the same values are used in many programs.  
 
+---
+
+
+Which SAS system option is used to identify format catalogs to SAS?
+a.	FMTERR
+b.	FMTLIB
+c.	NOFMTERR
+d.	FMTSEARCH=
+Correct answer:   d
+
+Your answer:  d
+
+By default, SAS searches for custom formats in the Work and Library libraries. The FMTSEARCH= system option specifies other catalogs to search when a format is referenced. 
+
+---
+
+Given the following PROC FORMAT step, how is the value 70 displayed when the AGEGRP. format is applied?
+
+     proc format;
+        picture agegrp
+                1-<13='00 Youth'
+                13-<20='00 Teen'
+                20-<70='00 Adult'
+                70-high='000 Senior';
+     run; 
+a.	000 Senior
+b.	70 Adult
+c.	70 Senior
+d.	070 Senior
+Correct answer:  c
+
+Your answer:  d
+
+A non-inclusive range is used such that the age at the high end of the range is not included. To create the picture format, three zeros are used to create a position for a three-digit numeric value. Because zero is used as a digit selector rather than a nonzero value, leading zeros are not included in the formatted value.   
+
+----
+
+
+
+Which set of statements would you add to the PROC CATALOG code to copy the LEVELS. and $PICKS. formats from the Sasuser.Formats catalog to the Work.Formats catalog?
+
+     proc catalog cat=sasuser.formats;
+        ?
+        ?
+     run;
+a.	
+copy out=sasuser.formats;
+select levels.format $picks.format;
+b.	
+copy out=work.formats;
+select levels $picks;
+c.	
+copy out=work.formats;
+select levels.format picks.formatc;
+d.	
+copy out=work.formats;
+select levels.format $picks.format;
+Correct answer:  c
+
+Your answer:  d
+
+In the COPY statement, OUT= specifies the catalog to which you want to copy the format catalog entry. In the SELECT statement you specify the catalog entries by their entire name. Remember that numeric formats are stored with the extension .FORMAT and character formats are stored with the extension .FORMATC.  
+
+
+
