@@ -632,6 +632,28 @@ Your answer:  a
 
 The FILEVAR= option enables you to dynamically change the currently opened input file to a new input file. The FILEVAR= variable must contain a character string that is a physical filename. Like automatic variables, the FILEVAR= variable is not written to the data set.   
 
+---
+According to the data set descriptions below, which of the variables listed qualify as BY variables for a DATA step match-merge?
+Variable	Type	Length	Description
+Code	char	5	Department code
+Totemps	num	3	Total number of employees
+Region	char	4	Location of the department
+Manager	num	5	Employee ID number
+Variable	Type	Length	Description
+IDnum	num	5	Employee ID number
+Name	char	20	Employee name
+Division	char	3	Division abbreviation
+Hiredate	num	8	Date of hire
+Supervisor	char	20	Name of supervisor
+a.	Code and IDnum
+b.	Manager and Supervisor
+c.	Manager and IDnum
+d.	There are no variables that are common to both of these data sets.
+Correct answer:   c
+
+Your answer:  c
+
+Remember that common variables might not have the same names. Manager and IDnum are the only two variables listed that match according to type and description. You can use the RENAME= option to rename one of these variables so that they can be used as BY variables in the MERGE statement of the DATA step. 
 
 
 
