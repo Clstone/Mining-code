@@ -750,5 +750,35 @@ When you use the KEY= option, you must specify the update that you want to make 
 ----
 
 
+Which of the following statements is true regarding the BUFNO= option?
+a.	The BUFNO= option specifies the size of each buffer that is used for reading or writing a SAS data set.
+b.	The BUFNO= option can improve execution time by limiting the number of input/output operations that are required.
+c.	Using the BUFNO= option results in permanent changes to the data set.
+d.	 Using the BUFNO= option to increase the number of buffers results in decreased memory consumption.
+Correct answer:   b
+
+Your answer:   d
+
+You can use the BUFNO= system option or data set option to control how many buffers are available for reading or writing a SAS data set. Using BUFNO= can improve execution time by limiting the number of input/output operations that are required for a particular SAS data set. However, the improvement in I/O comes at the cost of increased memory consumption. The buffer number is not a permanent attribute of the data set and is valid only for the current step or SAS session.
+ 
+----
+
+Which statement opens the file Work.Quarter1, allocates enough buffers to hold the entire file in memory, and reads the data into memory?
+a.	
+sasfile work.quarter1 open;
+b.	
+sasfile work.quarter1 load;
+c.	
+sasfile work.quarter1 bufno=max;
+d.	
+sasfile work.quarter1 bufsize=max; 
+Correct answer:   b
+
+Your answer:   a
+
+The SASFILE LOAD statement opens the file, allocates the buffers, and reads the data into memory   
+
+---
+
 
 
