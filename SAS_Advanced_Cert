@@ -794,4 +794,12 @@ The subsetting IF statement affects which variables are read into the program da
 
 --
 
+	When a thread-enabled procedure is submitted, CPU time
+right!	generally increases.	
+	generally decreases.
+	usually remains the same.
 
+The correct answer is selected.
+Thread-enabled procedures are completed in substantially less real time than if each task is handled sequentially, but the CPU time is generally increased.
+
+---
