@@ -803,3 +803,19 @@ The correct answer is selected.
 Thread-enabled procedures are completed in substantially less real time than if each task is handled sequentially, but the CPU time is generally increased.
 
 ---
+
+	
+5.  
+What happens if the workspace that is required for completing a sort is less than or equal to the value that is specified in the SORTSIZE= system option or procedure option?
+a.	CPU time is increased.
+b.	I/O is increased.
+c.	The entire sort can take place in memory.
+d.	 A temporary utility file is created in the Work directory or in a mainframe temporary area.
+Correct answer:   c
+
+Your answer:   d
+
+The SORTSIZE= system option or procedure option specifies how much memory is available to the SORT procedure. If the required workspace is less than or equal to the value specified in the SORTSIZE= system option or procedure option, then the entire sort can take place in memory, which reduces processing time.  
+
+
+---
