@@ -780,5 +780,10 @@ The SASFILE LOAD statement opens the file, allocates the buffers, and reads the 
 
 ---
 
+	If you use the WHERE= data set option and the WHERE statement in the same DATA step, SAS ignores the WHERE statement for input data sets. The WHERE= data set option and the WHERE statement call the same SAS routine.
+
+---
+
+
 
 
