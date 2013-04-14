@@ -783,7 +783,15 @@ The SASFILE LOAD statement opens the file, allocates the buffers, and reads the 
 	If you use the WHERE= data set option and the WHERE statement in the same DATA step, SAS ignores the WHERE statement for input data sets. The WHERE= data set option and the WHERE statement call the same SAS routine.
 
 ---
+Which of the following statements is true?
+	You can reduce I/O by using a subsetting IF statement to read only the data that is needed for checking specific conditions.	
+	You can reduce I/O by using a subsetting IF statement to limit what is read into the program data vector.
+	You can reduce CPU processing by using a subsetting IF statement to limit what is loaded into the input buffer.
+right!	You can reduce CPU processing by using a subsetting IF statement to limit what is read into the program data vector.
 
+The correct answer is selected.
+The subsetting IF statement affects which variables are read into the program data vector. You can reduce CPU processing if SAS does not have to process all variables for observations that do not meet the subsetting IF criteria.
 
+--
 
 
