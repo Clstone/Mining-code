@@ -733,5 +733,22 @@ Your answer:  d
 
 In the COPY statement, OUT= specifies the catalog to which you want to copy the format catalog entry. In the SELECT statement you specify the catalog entries by their entire name. Remember that numeric formats are stored with the extension .FORMAT and character formats are stored with the extension .FORMATC.  
 
+----
+
+
+Which statement about using the KEY= option in the MODIFY statement is true?
+a.	SAS locates the variables to update using the index specified in the KEY= option and then automatically overlays nonmissing transaction values as it does when you use the MODIFY/BY statements.
+b.	When you use the KEY= option, you must explicitly state the update that you want to make. SAS does not automatically overlay nonmissing transaction values.
+c.	The KEY= option is used to specify a variable to match for updating observations.
+d.	The index named in the KEY= option must be a simple index.
+Correct answer:  b
+
+Your answer:  d
+
+When you use the KEY= option, you must specify the update that you want to make to the data set.  
+
+----
+
+
 
 
